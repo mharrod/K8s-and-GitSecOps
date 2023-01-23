@@ -1,0 +1,111 @@
+@media only screen and (min-width: 76.25em) {
+    .md-main__inner {
+        max-width: none;
+    }
+    .md-sidebar--primary {
+        left: 0;
+    }
+    .md-sidebar--secondary {
+        right: 0;
+        margin-left: 0;
+        -webkit-transform: none;
+        transform: none;
+    }
+    .md-typeset__table {
+        min-width: 100%;
+    }
+    .md-typeset table:not([class]) {
+        display: table;
+    
+    }
+     .md-content {
+        --md-typeset-a-color: #9E5A63;
+      } 
+}
+
+[data-md-color-primary="harma"] {
+    --md-primary-fg-color: #314455;
+    --md-primary-fg-color--light: #9ccc66;
+    --md-primary-fg-color--dark: #689f38;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: hsla(0,0%,100%,0.7);
+}
+
+[data-md-color-accent=harma] {
+    --md-accent-fg-color: #9E5A63;
+    --md-accent-fg-color--transparent: hsla(75, 100%, 46%, 0.1);
+    --md-accent-bg-color: #fbfbfb;
+    --md-accent-bg-color--light: hsla(0, 0%, 98%, 0.7);
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+:root {
+  --md-admonition-icon--harma: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>')
+  }
+  .md-typeset .admonition.harma,
+  .md-typeset details.harma {
+    border-color: #9397B1;
+  }
+  .md-typeset .harma > .admonition-title,
+  .md-typeset .harma > summary {
+    background-color: rgba(147, 151, 177, 0.1);
+    
+  }
+  .md-typeset .harma > .admonition-title::before,
+  .md-typeset .harma > summary::before {
+    background-color: rgb(147, 151, 177);
+    -webkit-mask-image: var(--md-admonition-icon--harma);
+            mask-image: var(--md-admonition-icon--harma);
+
+
+  }
+
+  :root {
+    --md-admonition-icon--hnote: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.75 1h10.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1zM2.5 2.75v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25zm9.28 3.53-4.5 4.5a.75.75 0 0 1-1.06 0l-2-2a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l1.47 1.47 3.97-3.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042z"/></svg>')
+  }
+  .md-typeset .admonition.hnote,
+  .md-typeset details.hnote {
+    border-color: #9397B1;
+  }
+  .md-typeset .hnote > .admonition-title,
+  .md-typeset .hnote > summary {
+    background-color: rgba(147, 151, 177, 0.1);
+    
+  }
+  .md-typeset .hnote > .admonition-title::before,
+  .md-typeset .hnote > summary::before {
+    background-color: rgb(147, 151, 177);
+    -webkit-mask-image: var(--md-admonition-icon--hnote);
+            mask-image: var(--md-admonition-icon--hnote);
+
+  }
+
+
+  :root {
+    --md-admonition-icon--solve: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>')
+  }
+  .md-typeset .admonition.solve,
+  .md-typeset details.solve {
+    border-color: #9397B1;
+  }
+  .md-typeset .solve > .admonition-title,
+  .md-typeset .solve > summary {
+    background-color: rgba(147, 151, 177, 0.1);
+  }
+  .md-typeset .admonition.solve > .admonition-title::before,
+  .md-typeset .solve > summary::before {
+    background-color: rgb(147, 151, 177);
+    -webkit-mask-image: var(--md-admonition-icon--solve);
+            mask-image: var(--md-admonition-icon--solve);
+  }
+
+  
+
+
+
