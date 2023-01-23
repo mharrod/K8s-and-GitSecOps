@@ -1,0 +1,7 @@
+nav:
+- index.md
+- kubernetes.md
+- kaniko.md
+- cd.md
+- verification.md
+- ...

@@ -1,0 +1,8 @@
+mkdocs==1.3.0
+# If you change this, make sure the menu are built correctly and the footer is rendering correctly
+mkdocs-material== 8.2.11
+mkdocs-material-extensions>=1.0
+mkdocs-git-revision-date-localized-plugin==1.0.1
+mkdocs-awesome-pages-plugin==2.7.0
+mkdocs-exclude==1.0.2
+mkdocs-macros-plugin==0.7.0
