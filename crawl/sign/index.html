@@ -618,8 +618,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/cd/" class="md-nav__link">
-        3.Declarative Continuous Delivery
+      <a href="../../walk/verification/" class="md-nav__link">
+        3.Image Verification in K8s
       </a>
     </li>
   
@@ -632,8 +632,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/verification/" class="md-nav__link">
-        4.Image Verification in K8s(WIP)
+      <a href="../../walk/cd/" class="md-nav__link">
+        4.Declarative Continuous Delivery (WIP)
       </a>
     </li>
   
@@ -850,6 +850,7 @@ There are several options for signing containers, each with its own advantages a
 <li><strong>Install cosign</strong> - <a href="https://docs.sigstore.dev/cosign/installation/">https://docs.sigstore.dev/cosign/installation/</a></li>
 <li><strong>Using cosign</strong> - <a href="https://faun.pub/signing-container-images-using-cosign-7df8f61456ad">https://faun.pub/signing-container-images-using-cosign-7df8f61456ad</a></li>
 <li><strong>Using cosign for image signing</strong> - <a href="https://github.com/sigstore/cosign">https://github.com/sigstore/cosign</a></li>
+<li><strong>Cosign and SBOM</strong> - <a href="https://edu.chainguard.dev/open-source/sigstore/cosign/how-to-sign-an-sbom-with-cosign/">https://edu.chainguard.dev/open-source/sigstore/cosign/how-to-sign-an-sbom-with-cosign/</a></li>
 </ul>
 <p>Install yq wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &amp;&amp;\
     chmod +x /usr/bin/yq</p>
@@ -861,28 +862,28 @@ There are several options for signing containers, each with its own advantages a
 <li>Install Local Registry (no Authentication)</li>
 <li>Sign Image with Cosign and verify signature</li>
 <li>Sign Image and Verify signature</li>
-<li>Generate, sign, and attach SBOM</li>
+<li>Generate, attach, sign, and download SBOM</li>
 </ol>
 <p><strong>Solution</strong></p>
 <details class="solve">
 <summary>Solution</summary>
 <p>1.0 Install local container registry (no authentication)</p>
 <p>1.1 Install/start registry </p>
-<p><div class="highlight"><pre><span></span><code>$ docker run -d -p 5001:5001 --restart always --name registry registry:2
+<p><div class="highlight"><pre><span></span><code>$ docker run -d -p 5000:5000 --restart always --name registry registry:latest
 </code></pre></div>
   1.2 Build and tag image </p>
 <div class="highlight"><pre><span></span><code>$ docker build -t studentbook .
-$ docker image tag studentbook localhost:5001/studentbook:1.0
+$ docker image tag studentbook localhost:5000/studentbook:1.0
 </code></pre></div>
 <p>1.3 Push image to the local registry 
-  <div class="highlight"><pre><span></span><code>$ docker push localhost:5001/studentbook:1.0
+  <div class="highlight"><pre><span></span><code>$ docker push localhost:5000/studentbook:1.0
 </code></pre></div></p>
 <p>1.4 Inspect the image
-  <div class="highlight"><pre><span></span><code>$ skopeo copy --tls-verify=false docker://localhost:5001/studentbook oci-archive:stud.tar
-$ skopeo inspect --tls-verify=false docker://localhost:5001/studentbook
+  <div class="highlight"><pre><span></span><code>$ skopeo copy --src-tls-verify=false docker://localhost:5000/studentbook:1.0 oci-archive:stud.tar
+$ skopeo inspect --tls-verify=false docker://localhost:5000/studentbook:1.0
 </code></pre></div></p>
 <p>1.5 Run image from local registry </p>
-<div class="highlight"><pre><span></span><code>$ docker pull localhost:5001/studentbook:1.0
+<div class="highlight"><pre><span></span><code>$ docker pull localhost:5000/studentbook:1.0
 $ docker run -p 8090
 </code></pre></div>
 <p>2.0 Sign image with cosign</p>
@@ -904,22 +905,33 @@ $ dpkg -i cosign_1.6.0_amd64.deb
 <div class="highlight"><pre><span></span><code>$ cosign generate-key-pair
 </code></pre></div>
 <p>3.0 Sign image and verify signature</p>
-<div class="highlight"><pre><span></span><code>$ cosign sign --key cosign.key localhost:5001/studentbook/1.0
-$ cosign triangulate localhost:5001/studentbook:1.0 
-$ cosign verify localhost:5001/studentbook:1.0  
+<div class="highlight"><pre><span></span><code>$ cosign sign --key cosign.key localhost:5000/studentbook/1.0
+$ cosign triangulate localhost:500/studentbook:1.0 
+$ cosign verify localhost:5000/studentbook:1.0 --key cosign.pub
 </code></pre></div>
 <p>3.0. SBOM</p>
 <p>3.1 Generate SBOM with Syft
-  <div class="highlight"><pre><span></span><code>$ syft packages localhost:5001/studentbook:1.0 --scope all-layers -o spdx &gt; sb-image.spdx
+  <div class="highlight"><pre><span></span><code>$ syft packages localhost:5000/studentbook:1.0 --scope all-layers -o spdx &gt; sb-image.spdx
 </code></pre></div></p>
-<p>3.2 Attatch SBOM to container package </p>
-<div class="highlight"><pre><span></span><code>$ cosign attach sbom --sbom sb-image.spdx localhost:5001/studentbook:1.0
+<p>3.2 Attach SBOM to container package </p>
+<div class="highlight"><pre><span></span><code>$ cosign attach sbom --sbom sb-image.spdx localhost:5000/studentbook:1.0
+
+You will get something similar to the following.  You will need the SHA for the next step  
+$ Uploading SBOM file for [localhost:5000/studentbook:1.0] to [localhost:5000/studentbook:sha256-14cc75d664cbe30b77eb248b90ead399975acca02fa06c748d59e9de4657cf23.sbom] with mediaType [text/spdx].
 </code></pre></div>
+<p>3.3 Sign SBOM </p>
+<div class="highlight"><pre><span></span><code>$ cosign sign --key cosign.key localhost:5000/studentbook:1.0:sha256-14cc75d664cbe30b77eb248b90ead399975acca02fa06c748d59e9de4657cf23.sbom
+$ cosign verify --key cosign.pub localhost:5000/studentbook:sha256-14cc75d664cbe30b77eb248b90ead399975acca02fa06c748d59e9de4657cf23.sbom
+</code></pre></div>
+<p>3.4 Download SBOM 
+  <div class="highlight"><pre><span></span><code>$ cosign download sbom localhost:5000/studentbook --output-file=sbom.spdx
+</code></pre></div></p>
 </details>
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Add Authentication</strong> - Add authentication to your local registry </li>
 <li><strong>Install a and use a Vault</strong> - Store and use secrets for cosign from a vault</li>
+<li><strong>Use SBOM to scan with Trivy</strong> - Use the SBOM to scan with Trivy.  Note, Trivty may only work with Cyclone-DX.</li>
 </ol>
 
   <hr>
@@ -927,7 +939,7 @@ $ cosign verify localhost:5001/studentbook:1.0
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
       
     
   </small>

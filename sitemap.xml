@@ -2,82 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/capstone/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/crawl/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/crawl/local/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/crawl/published/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/crawl/scratch/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/crawl/sign/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/explorations/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/explorations/proposal/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/fly/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/run/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/walk/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/walk/cd/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/walk/kaniko/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/walk/kubernetes/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mharrod.github.io/k8s-and-GitSecOps/walk/verification/</loc>
-         <lastmod>2023-01-23</lastmod>
+         <lastmod>2023-01-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

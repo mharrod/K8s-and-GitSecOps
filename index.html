@@ -636,8 +636,8 @@
   
   
     <li class="md-nav__item">
-      <a href="walk/cd/" class="md-nav__link">
-        3.Declarative Continuous Delivery
+      <a href="walk/verification/" class="md-nav__link">
+        3.Image Verification in K8s
       </a>
     </li>
   
@@ -650,8 +650,8 @@
   
   
     <li class="md-nav__item">
-      <a href="walk/verification/" class="md-nav__link">
-        4.Image Verification in K8s(WIP)
+      <a href="walk/cd/" class="md-nav__link">
+        4.Declarative Continuous Delivery (WIP)
       </a>
     </li>
   
@@ -882,14 +882,14 @@
                                  |             |               |             |              |               |
                               Semgrep        Grype            ZAP          Snyk        Trivy/Snyk          Falco
                              SonarQube      ggshield        SemGrep                                     GLF Stack
-                              Gitleak       Halolint       SonarQube                                    Metasploit
+                             TruffleHog     Halolint       SonarQube                                    Metasploit
                                Snyk       Tekton Chains    Trivy/Snyk                                     Trivy
                                            DockerBench                                                     ZAP
                                             KubeBench
                                            Trivy/Snyk
-                                          Nmap/Nessus
-                                           Nikto/Zap
-                                             Syft
+                                           Nmap/Nessus
+                                            Nikto/Zap
+                                              Syft
 </code></pre></div>
 <details class="harma">
 <summary>Additional Reading: Theory of GitSecOps</summary>
@@ -975,10 +975,10 @@ There is no one "best" way to implement GitSecOps, as the specific practices and
 <ul>
 <li><strong>Kind, Kaniko, and K8s</strong> - Set-up a local Kubernetes development clusters with Kind and deploy images using Kaniko.</li>
 <li><strong>Build Images with Kaniko</strong> - Using Kaniko to build images without Docker Daemon</li>
+<li><strong>Image Verification in K8s</strong> - Detecting and enforcing the use of signed images in K8s.</li>
 <li><strong>Declarative Continuous Delivery</strong> - Using Declarative Continuous Delivery to manage deployment of an application..</li>
-<li><strong>Image Verification in K8s</strong> - Detecting and enforcing the use of signed images in K8s.
-<br></li>
 </ul>
+<p><br></p>
 <p><strong>Run:</strong> </p>
 <p>Reader will leverage Tekton to build a repeatable cloud native CI/CD system to deploy the application on Kubernetes.</p>
 <ul>
@@ -1006,7 +1006,7 @@ There is no one "best" way to implement GitSecOps, as the specific practices and
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
       
     
   </small>

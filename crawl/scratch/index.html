@@ -644,8 +644,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/cd/" class="md-nav__link">
-        3.Declarative Continuous Delivery
+      <a href="../../walk/verification/" class="md-nav__link">
+        3.Image Verification in K8s
       </a>
     </li>
   
@@ -658,8 +658,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/verification/" class="md-nav__link">
-        4.Image Verification in K8s(WIP)
+      <a href="../../walk/cd/" class="md-nav__link">
+        4.Declarative Continuous Delivery (WIP)
       </a>
     </li>
   
@@ -958,12 +958,15 @@ $ sudo apt-get install python3-venv
 $ python3 -m venv venv 
 $ source venv/bin/activate 
 $ pip install fastapi uvicorn 
+
+# Install tooling to make working with JSON and YAML files easier 
 $ sudo apt-get install jq
+$ wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq &amp;&amp;\
+chmod +x /usr/bin/yq
 </code></pre></div></p>
 <p>1.2 Create Application</p>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;app.py
 
-#
 from fastapi import FastAPI, HTTPException
 from typing import Optional
 from pydantic import BaseModel
@@ -1099,7 +1102,7 @@ EOF
 $ docker run -p 8090:8090 studentbook
 </code></pre></div>
 <p>4.0 Create a Single Stage Buildah File </p>
-<p><div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;single-buildah.sh
+<div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;single-buildah.sh
 #!/usr/bin/env bash
 
 set -euo pipefail
@@ -1131,23 +1134,19 @@ sudo chmod +x single-buildah.sh
 
 $ podman run -p 8090:8090 studentbook
 </code></pre></div>
-  90:8090 localhost:5001/studentbook:1.0
-  <div class="highlight"><pre><span></span><code>6.0 Push student book to DockerHub
-
-# assumes you have DockerHub account set-up
-
-6.1 Enter docker username and password (NOTE not secure to do it this way)
-</code></pre></div>
-  $ docker login -u your_user_name
-  <div class="highlight"><pre><span></span><code>6.2 Tag image (if not already done from above)
-</code></pre></div>
-  $ docker build -t studentbook
-  $ docker image tag studentbook USER/studentbook:v1.0
-  <div class="highlight"><pre><span></span><code>6.3 Push Image
-</code></pre></div>
-  $ docker image push USER/studentbook:v1.0
-  $ docker push 
-  ```</p>
+<p>6.0 Push student book to DockerHub</p>
+<p># assumes you have DockerHub account set-up</p>
+<p>6.1 Enter docker username and password (NOTE not secure to do it this way)
+  <div class="highlight"><pre><span></span><code>$ docker login -u your_user_name
+</code></pre></div></p>
+<p>6.2 Tag image (if not already done from above)
+  <div class="highlight"><pre><span></span><code>$ docker build -t studentbook
+$ docker image tag studentbook USER/studentbook:v1.0
+</code></pre></div></p>
+<p>6.3 Push Image
+  <div class="highlight"><pre><span></span><code>$ docker image push USER/studentbook:v1.0
+$ docker push 
+</code></pre></div></p>
 </details>
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1169,7 +1168,7 @@ $ podman run -p 8090:8090 studentbook
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
       
     
   </small>

@@ -618,8 +618,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../cd/" class="md-nav__link">
-        3.Declarative Continuous Delivery
+      <a href="../verification/" class="md-nav__link">
+        3.Image Verification in K8s
       </a>
     </li>
   
@@ -632,8 +632,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../verification/" class="md-nav__link">
-        4.Image Verification in K8s(WIP)
+      <a href="../cd/" class="md-nav__link">
+        4.Declarative Continuous Delivery (WIP)
       </a>
     </li>
   
@@ -907,13 +907,13 @@ sudo mv ./kind /usr/local/bin/kind
 # If you are going to use podman then you need to add it as an external provider in your ~/.bashrc or ~/.zshrc file
 $ export KIND_EXPERIMENTAL_PROVIDER=podman
 
-# If you like, you can alos add an alias to the docker command to your ~/.bashrc or ~/.zshrc file
+# If you like, you can also add an alias to the docker command to your ~/.bashrc or ~/.zshrc file
 alias docker=&#39;podman&#39;
 
 # Other things you may need to do can be found here https://kind.sigs.k8s.io/docs/user/rootless/
 </code></pre></div>
-<p>1.2 Create Cluster default Kind</p>
-<p><div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF | kind create cluster --name studentbook --config=-
+<p>1.2 Create Kind Cluster Named Juice</p>
+<p><div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF | kind create cluster --name juice --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
@@ -941,58 +941,58 @@ EOF
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-name: juice-shop-manifests
+  name: juice-shop
 spec:
-template:
-  metadata:
-    labels:
-      app: juice-shop-manifests
-  spec:
-    containers:
-    - name: juice-shop-manifests
-      image: bkimminich/juice-shop
-selector:
-  matchLabels:
-    app: juice-shop-manifests
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      containers:
+      - name: juice-shop
+        image: bkimminich/juice-shop
+  selector:
+    matchLabels:
+      app: juice-shop
 ---
 kind: Service
 apiVersion: v1
 metadata:
-name: juice-shop-manifests
+  name: juice-shop
 spec:
-type: NodePort
-selector:
-  app: juice-shop-manifests
-ports:
-- name: http
-  port: 8000
-  targetPort: 3000
----
+  type: NodePort
+  selector:
+    app: juice-shop
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 3000
+
 EOF
 </code></pre></div>
   <br></p>
 <hr />
 <p>3.0 Scan Juice Manifests with Kubescape</p>
 <p><div class="highlight"><pre><span></span><code>curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
-kubescape scan framework nsa k8s/*.yaml
+kubescape scan framework nsa *.yaml
 </code></pre></div>
   <br></p>
 <hr />
 <p>4.0 Deploy Juiceshop via manifests </p>
 <p>4.1 Create deployment</p>
-<div class="highlight"><pre><span></span><code> kubectl create -f juice-shop-manifests.yaml
+<div class="highlight"><pre><span></span><code>$ kubectl create -f juice-shop-manifests.yaml
 </code></pre></div>
 <p>4.2 Watch service 
-  <div class="highlight"><pre><span></span><code>kubectl get po --watch
+  <div class="highlight"><pre><span></span><code>$ kubectl get po --watch
 </code></pre></div></p>
 <p>4.3  If want to browse by local pod IP then do following</p>
 <p><div class="highlight"><pre><span></span><code># Check service endpoints
-  kubectl get svc juice-shop
+$ kubectl get svc juice-shop
 # get internal IP 
-kubectl get no -o wide | awk &#39;{print $6}&#39;
+$ kubectl get no -o wide | awk &#39;{print $6}&#39;
 </code></pre></div>
   4.4 If you want to browse via local host then do the following 
-  <div class="highlight"><pre><span></span><code>kubectl port-forward svc/juice-shop-manifests 8080:8000  
+  <div class="highlight"><pre><span></span><code>$ kubectl port-forward svc/juice-shop 8080:8000  
 </code></pre></div>
   <br></p>
 <hr />
@@ -1104,13 +1104,13 @@ EOF
 <div class="highlight"><pre><span></span><code>$ kubectl get pods
 </code></pre></div>
 <p>5.2.2 The results are held in the pod's logs
-  <div class="highlight"><pre><span></span><code>kubectl logs kube-bench . . .
+  <div class="highlight"><pre><span></span><code>kubectl logs kube-bench-[rest from get pods]
 </code></pre></div></p>
 <p>5.3 Kube Hunter </p>
 <p>5.3.1 Installing kube-hunter to check from inside the cluster</p>
 <p><div class="highlight"><pre><span></span><code>$ kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-hunter/master/job.yaml
 $ kubectl get pods
-$ kubectl logs &lt;kube-hunter-pod-name&gt;
+$ kubectl logs kube-hunter-[rest from get pods]
 </code></pre></div>
   <br></p>
 <hr />
@@ -1121,6 +1121,7 @@ $ kubectl logs &lt;kube-hunter-pod-name&gt;
  helm repo update
 </code></pre></div>
 <p>6.2 Add the helm repo for Juice-shop</p>
+<p>Make sure to delete previous instance or rename this one to avoid conflicts.  Even better,  build a new cluster and start from scratch.</p>
 <div class="highlight"><pre><span></span><code>$ helm repo add juice https://charts.securecodebox.io
 </code></pre></div>
 <p>6.3 Inspect Juiceshop Helm Chart 
@@ -1147,7 +1148,7 @@ $ checkov -d juice-shop/ --framework helm
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
       
     
   </small>

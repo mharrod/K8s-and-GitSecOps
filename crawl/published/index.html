@@ -618,8 +618,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/cd/" class="md-nav__link">
-        3.Declarative Continuous Delivery
+      <a href="../../walk/verification/" class="md-nav__link">
+        3.Image Verification in K8s
       </a>
     </li>
   
@@ -632,8 +632,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/verification/" class="md-nav__link">
-        4.Image Verification in K8s(WIP)
+      <a href="../../walk/cd/" class="md-nav__link">
+        4.Declarative Continuous Delivery (WIP)
       </a>
     </li>
   
@@ -881,7 +881,7 @@
 <details class="solve">
 <summary>Solution</summary>
 <p>1.Inspect Image on GitHub Repo with Trivy - Look for security problems BEFORE you download one bit of the image.</p>
-<div class="highlight"><pre><span></span><code>$ trivy repo https://github.com/juice-shop/juice-shop | tee /tmp/juice/outputs/trivy.txt
+<div class="highlight"><pre><span></span><code>$ trivy repo https://github.com/juice-shop/juice-shop | tee $JUICE_HOME/outputs/trivy.txt
 
 #Note try this to see what it would look like if results were available 
 $ trivy repo https://github.com/knqyf263/trivy-ci-test
@@ -894,16 +894,16 @@ $ git clone https://github.com/juice-shop/juice-shop.git
 $ docker pull ghcr.io/hadolint/hadolint  
 
 # Run Hadolint
-$ docker run --rm -i ghcr.io/hadolint/hadolint &lt; Dockerfile  | tee /tmp/juice/outputs/hadolint.txt
+$ docker run --rm -i ghcr.io/hadolint/hadolint &lt; Dockerfile  | tee $JUICE_HOME/outputs/hadolint.txt
 </code></pre></div>
 <p>3.Check for Secrets with gggshield - Note: This particular tool is not opensource but free for low use scenarios.  You will need to sign-up before using.
   <div class="highlight"><pre><span></span><code>$ export GITGUARDIAN_API_KEY=the-token-you-got-from-dashboard
 $ python3 -m venv /tmp/juice/venv
-$ /tmp//juice/venv/bin/pip install ggshield
+$ $JUICE_HOME/venv/bin/pip install ggshield
 $ ggshield scan docker bad-secrets
 </code></pre></div></p>
 <p>4.Inspect with Skopeo on DockerHub - Again before downloading, look for integrity issues before downloading. </p>
-<div class="highlight"><pre><span></span><code>$ skopeo inspect docker://bkimminich/juice-shop | jq &#39;.&#39; | tee /tmp/juice/outputs/skopeo.txt
+<div class="highlight"><pre><span></span><code>$ skopeo inspect docker://bkimminich/juice-shop | jq &#39;.&#39; | tee $JUICE_HOME/outputs/skopeo.txt
 
 # To just see the config
 $ skopeo inspect --config docker://bkimminich/juice-shop | jq &#39;.&#39;   
@@ -913,13 +913,13 @@ skopeo list-tags docker://bkimminich/juice-shop
 </code></pre></div>
 <p>5.Download Image as OCI Archive and scan with Grype - Downloading as an archived TAR to a isolated location. Not pulling the image just yet. We want to check for known vulnerabilities. </p>
 <div class="highlight"><pre><span></span><code># Copy image to local OCI Archive
-$ skopeo copy docker://bkimminich/juice-shop oci-archive:/tmp/juice/juice-shop.tar 
+$ skopeo copy docker://bkimminich/juice-shop oci-archive:$JUICE_HOME/juice-shop.tar 
 
 # Install Grype
 $ curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
 # Scan with Grype 
-$ grype oci-archive:/tmp/juice/juice-shop.tar --scope all-layers | tee /tmp/juice/outputs/grype.txt
+$ grype oci-archive:/tmp/juice/juice-shop.tar --scope all-layers | tee $JUICE_HOME/outputs/grype.txt
 
 # Bonus Snyk has great tooling to do this.  You will need to set-up a free tier account.
 $ snyk container test oci-archive:/tmp/juice/juice-shop.tar 
@@ -932,7 +932,7 @@ $ curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | su
 $ syft packages docker.io/bkimminich/juice-shop --scope all-layers  -o json
 
 # Generate SBOM from Archieve 
-$ syft packages oci-archive:/tmp/juice/juice-shop.tar --scope all-layers  -o json | tee /tmp/juice/outputs/syft.txt
+$ syft packages oci-archive:/tmp/juice/juice-shop.tar --scope all-layers  -o json | tee $JUICE_HOME/outputs/syft.txt
 </code></pre></div>
 <p>7.Pull Juiceshop image and rerun security testing - Image has been thoroughly tested even before downloading.  Now we can download it and run testing again.  This is overkill but shows that most of the testing can also be run against the local image, not just an archive.  </p>
 <div class="highlight"><pre><span></span><code>$ docker pull bkimminich/juice-shop 
@@ -950,7 +950,7 @@ $ syft packages docker.io/bkimminich/juice-shop --scope all-layers  -o json
 $ git clone https://github.com/docker/docker-bench-security.git
 $ cd docker-bench-security
 
-$ ./docker-bench-security.sh -i juice-shop | tee /tmp/juice/outputs/bench.txt
+$ ./docker-bench-security.sh -i juice-shop | tee $JUICE_HOME/outputs/bench.txt
 </code></pre></div>
 <p>9.Run container and scan with NMAP and Nikto - There are much better commercial and free scanners to use but this is a good starting point to see how DAST can be incorporated early on in the pipeline. </p>
 <div class="highlight"><pre><span></span><code># Run the docker container
@@ -966,9 +966,9 @@ docker pull frapsoft/nikto
 # Docker ps #get container ID
 docker inspect -f &#39;{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; container_name_or_id   
 
-# Scan with NMAp
-$ docker run --rm -it instrumentisto/nmap -A -T4 172.17.0.3  -p 3000  | tee /tmp/juice/outputs/nmap.txt
-$ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000 
+# Scan with Nmap
+$ docker run --rm -it instrumentisto/nmap -A -T4 172.17.0.3  -p 3000  | tee $JUICE_HOME/outputs/nmap.txt
+$ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000 | tee $JUICE_HOME/outputs/nikto.txt
 </code></pre></div>
 </details>
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
@@ -987,7 +987,7 @@ $ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
       
     
   </small>

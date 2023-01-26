@@ -631,8 +631,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/cd/" class="md-nav__link">
-        3.Declarative Continuous Delivery
+      <a href="../../walk/verification/" class="md-nav__link">
+        3.Image Verification in K8s
       </a>
     </li>
   
@@ -645,8 +645,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../walk/verification/" class="md-nav__link">
-        4.Image Verification in K8s(WIP)
+      <a href="../../walk/cd/" class="md-nav__link">
+        4.Declarative Continuous Delivery (WIP)
       </a>
     </li>
   
@@ -857,7 +857,7 @@
 <p>We suggest that you Walk the happy path before getting started - https://pwning.owasp-juice.shop/part1/happy-path.html</p>
 <p>A big focus of this section is understanding the importance of security scanning your container images.  Security scanning container images involves checking the image for known vulnerabilities and compliance issues.  This can be done at several levels:</p>
 <ul>
-<li>With standalone container scanning using ooling like Aqua Security, Snyk, and Anchore.</li>
+<li>With standalone container scanning using tooling like Aqua Security, Snyk, and Anchore.</li>
 <li>With traditional vulnerability scanning tools like Nessus, OpenVAS, and Qualys.</li>
 <li>Using built-in scanning capabilities in Image registries such as DockerHub, Quay, and Harbor.</li>
 </ul>
@@ -894,45 +894,42 @@
 <p>1.Install JuiceShop locally.</p>
 <div class="highlight"><pre><span></span><code># Make sure node is installed
 
+# Set-up a file structure to handle tests.  These can be anywhere/anything.
+# Set your 
+$ export JUICE_HOME= &quot;where you are placing it&quot; # eg export JUICE_HOME=&quot;Your-Path&quot;
+
+$ mkdir $JUICE_HOME/outputs 
 $ git clone https://github.com/juice-shop/juice-shop.git --depth 1
-$ cd juice-shop
+$ cd juice-shop 
 $ npm install
 $ npm start 
-
 # Browse to http://localhost:3000 
 # Take sometime to walk the happy path - https://pwning.owasp-juice.shop/part1/happy-path.html
 </code></pre></div>
 <p>2.Complete a secure static code analysis with SemGrep</p>
-<div class="highlight"><pre><span></span><code># Set-up a file structure to handle tests.  These can be anywhere/anything.
-$ mkdir /tmp/juice &amp;&amp; mkdir /tmp/juice/outputs 
-
-# Git Clone Juiceshop to testing folders 
-$ cd /tmp/juice
-$ git clone git@github.com:juice-shop/juice-shop.git
-$ cd juice-shop
+<div class="highlight"><pre><span></span><code>$ cd juice-shop
 
 # Run  basic Semgrep analysis
-$ docker run --rm -v &quot;${PWD}:/src&quot; returntocorp/semgrep semgrep --config=auto | tee /tmp/juice/outputs/semgrep.txt
+$ docker run --rm -v &quot;${PWD}:/src&quot; returntocorp/semgrep semgrep --config=auto | tee $JUICE_HOME/outputs/semgrep.txt
 </code></pre></div>
 <p>3.Run a software composite analysis with Snyk
 Snyk is not opensource. However, they do have a free tier that you can use once you sign-up.</p>
 <div class="highlight"><pre><span></span><code># Make sure you are in the Juice-shop dir that you cloned earlier
 $ CD /tmp/juice/juice-shop 
-$ snyk test | tee /tmp/juice/outputs/snyk.txt
+$ snyk test | tee $JUICE_HOME/outputs/snyk.txt
 </code></pre></div>
-<p>4.Run Git secret analysis with Gitleaks </p>
-<div class="highlight"><pre><span></span><code>$ docker pull zricethezav/gitleaks:latest
-$ docker run -v ${path_to_host_folder_to_scan}:/path zricethezav/gitleaks:latest [COMMAND] --source=&quot;/path&quot; [OPTIONS]
+<p>4.Run Git secret analysis with Trufflehog</p>
+<div class="highlight"><pre><span></span><code>  $ docker run -it -v &quot;$PWD:/pwd&quot; ghcr.io/trufflesecurity/trufflehog:latest github --repo https://github.com/juice-shop/juice-shop.git --debug | tee $JUICE_HOME/outputs/truffle.txt
 </code></pre></div>
 <p>5.Run Infrastructure scan (port) with NMAP</p>
 <div class="highlight"><pre><span></span><code># Of course, there are better tools (e.g. ZAP) but this will give you the rough idea of how to run an infrastructure scan
 $ docker pull instrumentisto/nmap
-$ docker run --rm -it instrumentisto/nmap -A -T4 scanme.nmap.org | tee /tmp/juice/outputs/nmap.txt
+$ docker run --rm -it instrumentisto/nmap -A -T4 -p 3000 127.0.0.1 | tee $JUICE_HOME/outputs/nmap.txt
 </code></pre></div>
 <p>6.Run Web scan with Nikto </p>
 <div class="highlight"><pre><span></span><code># Of course, there are better tools (e.g. ZAP) but this will give you the rough idea of how to run a web scan
 $ docker pull frapsoft/nikto
-$ docker run frapsoft/nikto -host https://example.com | tee /tmp/juice/outputs/nikto.txt
+$ docker run frapsoft/nikto -host http://localhost:3000 | tee $JUICE_HOME/outputs/nikto.txt
 </code></pre></div>
 </details>
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
@@ -946,7 +943,7 @@ $ docker run frapsoft/nikto -host https://example.com | tee /tmp/juice/outputs/n
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
       
     
   </small>
