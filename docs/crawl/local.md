@@ -12,7 +12,7 @@ We suggest that you Walk the happy path before getting started - https://pwning.
 
 A big focus of this section is understanding the importance of security scanning your container images.  Security scanning container images involves checking the image for known vulnerabilities and compliance issues.  This can be done at several levels:
 
-* With standalone container scanning using ooling like Aqua Security, Snyk, and Anchore.
+* With standalone container scanning using tooling like Aqua Security, Snyk, and Anchore.
 * With traditional vulnerability scanning tools like Nessus, OpenVAS, and Qualys.
 * Using built-in scanning capabilities in Image registries such as DockerHub, Quay, and Harbor.
 
@@ -56,11 +56,15 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
     ```
     # Make sure node is installed
 
+    # Set-up a file structure to handle tests.  These can be anywhere/anything.
+    # Set your 
+    $ export JUICE_HOME= "where you are placing it" # eg export JUICE_HOME="Your-Path"
+
+    $ mkdir $JUICE_HOME/outputs 
     $ git clone https://github.com/juice-shop/juice-shop.git --depth 1
-    $ cd juice-shop
+    $ cd juice-shop 
     $ npm install
     $ npm start 
-
     # Browse to http://localhost:3000 
     # Take sometime to walk the happy path - https://pwning.owasp-juice.shop/part1/happy-path.html
     ``` 
@@ -68,16 +72,10 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
     2.Complete a secure static code analysis with SemGrep
 
     ```
-    # Set-up a file structure to handle tests.  These can be anywhere/anything.
-    $ mkdir /tmp/juice && mkdir /tmp/juice/outputs 
-
-    # Git Clone Juiceshop to testing folders 
-    $ cd /tmp/juice
-    $ git clone git@github.com:juice-shop/juice-shop.git
     $ cd juice-shop
 
     # Run  basic Semgrep analysis
-    $ docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto | tee /tmp/juice/outputs/semgrep.txt
+    $ docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto | tee $JUICE_HOME/outputs/semgrep.txt
     ```
 
 
@@ -87,14 +85,15 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
     ```
     # Make sure you are in the Juice-shop dir that you cloned earlier
     $ CD /tmp/juice/juice-shop 
-    $ snyk test | tee /tmp/juice/outputs/snyk.txt
+    $ snyk test | tee $JUICE_HOME/outputs/snyk.txt
     ```
 
-    4.Run Git secret analysis with Gitleaks 
+    4.Run Git secret analysis with Trufflehog
+
+
 
     ```
-    $ docker pull zricethezav/gitleaks:latest
-    $ docker run -v ${path_to_host_folder_to_scan}:/path zricethezav/gitleaks:latest [COMMAND] --source="/path" [OPTIONS]
+      $ docker run -it -v "$PWD:/pwd" ghcr.io/trufflesecurity/trufflehog:latest github --repo https://github.com/juice-shop/juice-shop.git --debug | tee $JUICE_HOME/outputs/truffle.txt
 
     ```
 
@@ -104,7 +103,7 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
     ```
     # Of course, there are better tools (e.g. ZAP) but this will give you the rough idea of how to run an infrastructure scan
     $ docker pull instrumentisto/nmap
-    $ docker run --rm -it instrumentisto/nmap -A -T4 scanme.nmap.org | tee /tmp/juice/outputs/nmap.txt
+    $ docker run --rm -it instrumentisto/nmap -A -T4 -p 3000 127.0.0.1 | tee $JUICE_HOME/outputs/nmap.txt
 
     ```
 
@@ -113,7 +112,7 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
     ```
     # Of course, there are better tools (e.g. ZAP) but this will give you the rough idea of how to run a web scan
     $ docker pull frapsoft/nikto
-    $ docker run frapsoft/nikto -host https://example.com | tee /tmp/juice/outputs/nikto.txt
+    $ docker run frapsoft/nikto -host http://localhost:3000 | tee $JUICE_HOME/outputs/nikto.txt
 
     ```
 

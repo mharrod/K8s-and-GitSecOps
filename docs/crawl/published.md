@@ -64,7 +64,7 @@ Container Security Testing:
       1.Inspect Image on GitHub Repo with Trivy - Look for security problems BEFORE you download one bit of the image.
 
       ```
-      $ trivy repo https://github.com/juice-shop/juice-shop | tee /tmp/juice/outputs/trivy.txt
+      $ trivy repo https://github.com/juice-shop/juice-shop | tee $JUICE_HOME/outputs/trivy.txt
 
       #Note try this to see what it would look like if results were available 
       $ trivy repo https://github.com/knqyf263/trivy-ci-test
@@ -81,21 +81,21 @@ Container Security Testing:
       $ docker pull ghcr.io/hadolint/hadolint  
 
       # Run Hadolint
-      $ docker run --rm -i ghcr.io/hadolint/hadolint < Dockerfile  | tee /tmp/juice/outputs/hadolint.txt
+      $ docker run --rm -i ghcr.io/hadolint/hadolint < Dockerfile  | tee $JUICE_HOME/outputs/hadolint.txt
       ```
 
       3.Check for Secrets with gggshield - Note: This particular tool is not opensource but free for low use scenarios.  You will need to sign-up before using.
       ```
       $ export GITGUARDIAN_API_KEY=the-token-you-got-from-dashboard
       $ python3 -m venv /tmp/juice/venv
-      $ /tmp//juice/venv/bin/pip install ggshield
+      $ $JUICE_HOME/venv/bin/pip install ggshield
       $ ggshield scan docker bad-secrets
       ```
 
       4.Inspect with Skopeo on DockerHub - Again before downloading, look for integrity issues before downloading. 
 
       ```
-      $ skopeo inspect docker://bkimminich/juice-shop | jq '.' | tee /tmp/juice/outputs/skopeo.txt
+      $ skopeo inspect docker://bkimminich/juice-shop | jq '.' | tee $JUICE_HOME/outputs/skopeo.txt
 
       # To just see the config
       $ skopeo inspect --config docker://bkimminich/juice-shop | jq '.'   
@@ -111,13 +111,13 @@ Container Security Testing:
       ```
 
       # Copy image to local OCI Archive
-      $ skopeo copy docker://bkimminich/juice-shop oci-archive:/tmp/juice/juice-shop.tar 
+      $ skopeo copy docker://bkimminich/juice-shop oci-archive:$JUICE_HOME/juice-shop.tar 
 
       # Install Grype
       $ curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
       # Scan with Grype 
-      $ grype oci-archive:/tmp/juice/juice-shop.tar --scope all-layers | tee /tmp/juice/outputs/grype.txt
+      $ grype oci-archive:/tmp/juice/juice-shop.tar --scope all-layers | tee $JUICE_HOME/outputs/grype.txt
 
       # Bonus Snyk has great tooling to do this.  You will need to set-up a free tier account.
       $ snyk container test oci-archive:/tmp/juice/juice-shop.tar 
@@ -134,7 +134,7 @@ Container Security Testing:
       $ syft packages docker.io/bkimminich/juice-shop --scope all-layers  -o json
 
       # Generate SBOM from Archieve 
-      $ syft packages oci-archive:/tmp/juice/juice-shop.tar --scope all-layers  -o json | tee /tmp/juice/outputs/syft.txt
+      $ syft packages oci-archive:/tmp/juice/juice-shop.tar --scope all-layers  -o json | tee $JUICE_HOME/outputs/syft.txt
 
 
       ```
@@ -163,7 +163,7 @@ Container Security Testing:
       $ git clone https://github.com/docker/docker-bench-security.git
       $ cd docker-bench-security
 
-      $ ./docker-bench-security.sh -i juice-shop | tee /tmp/juice/outputs/bench.txt
+      $ ./docker-bench-security.sh -i juice-shop | tee $JUICE_HOME/outputs/bench.txt
 
       ```
 
@@ -183,9 +183,9 @@ Container Security Testing:
       # Docker ps #get container ID
       docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id   
 
-      # Scan with NMAp
-      $ docker run --rm -it instrumentisto/nmap -A -T4 172.17.0.3  -p 3000  | tee /tmp/juice/outputs/nmap.txt
-      $ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000 
+      # Scan with Nmap
+      $ docker run --rm -it instrumentisto/nmap -A -T4 172.17.0.3  -p 3000  | tee $JUICE_HOME/outputs/nmap.txt
+      $ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000 | tee $JUICE_HOME/outputs/nikto.txt
 
 
       ```

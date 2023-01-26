@@ -86,7 +86,11 @@ Overall, building containers in multiple stages can provide a number of benefits
       $ python3 -m venv venv 
       $ source venv/bin/activate 
       $ pip install fastapi uvicorn 
+
+      # Install tooling to make working with JSON and YAML files easier 
       $ sudo apt-get install jq
+      $ wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq &&\
+      chmod +x /usr/bin/yq
 
       ```
 
@@ -95,7 +99,6 @@ Overall, building containers in multiple stages can provide a number of benefits
       ```
       cat <<'EOF' >>app.py
 
-      #
       from fastapi import FastAPI, HTTPException
       from typing import Optional
       from pydantic import BaseModel
@@ -288,8 +291,7 @@ Overall, building containers in multiple stages can provide a number of benefits
       $ podman run -p 8090:8090 studentbook
 
       ```
-      90:8090 localhost:5001/studentbook:1.0
-      ```    
+    
 
       6.0 Push student book to DockerHub
 

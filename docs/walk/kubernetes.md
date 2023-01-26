@@ -89,16 +89,16 @@ Additional Links:
       # If you are going to use podman then you need to add it as an external provider in your ~/.bashrc or ~/.zshrc file
       $ export KIND_EXPERIMENTAL_PROVIDER=podman
 
-      # If you like, you can alos add an alias to the docker command to your ~/.bashrc or ~/.zshrc file
+      # If you like, you can also add an alias to the docker command to your ~/.bashrc or ~/.zshrc file
       alias docker='podman'
 
       # Other things you may need to do can be found here https://kind.sigs.k8s.io/docs/user/rootless/
       ```
 
-      1.2 Create Cluster default Kind
+      1.2 Create Kind Cluster Named Juice
 
       ```
-      cat <<EOF | kind create cluster --name studentbook --config=-
+      cat <<EOF | kind create cluster --name juice --config=-
       kind: Cluster
       apiVersion: kind.x-k8s.io/v1alpha4
       nodes:
@@ -128,34 +128,35 @@ Additional Links:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-      name: juice-shop-manifests
+        name: juice-shop
       spec:
-      template:
-        metadata:
-          labels:
-            app: juice-shop-manifests
-        spec:
-          containers:
-          - name: juice-shop-manifests
-            image: bkimminich/juice-shop
-      selector:
-        matchLabels:
-          app: juice-shop-manifests
+        template:
+          metadata:
+            labels:
+              app: juice-shop
+          spec:
+            containers:
+            - name: juice-shop
+              image: bkimminich/juice-shop
+        selector:
+          matchLabels:
+            app: juice-shop
       ---
       kind: Service
       apiVersion: v1
       metadata:
-      name: juice-shop-manifests
+        name: juice-shop
       spec:
-      type: NodePort
-      selector:
-        app: juice-shop-manifests
-      ports:
-      - name: http
-        port: 8000
-        targetPort: 3000
-      ---
+        type: NodePort
+        selector:
+          app: juice-shop
+        ports:
+        - name: http
+          port: 8000
+          targetPort: 3000
+    
       EOF
+
       ```
       <br>
       -----------------------------------------------------------------------------------------------
@@ -163,7 +164,7 @@ Additional Links:
 
       ```
       curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
-      kubescape scan framework nsa k8s/*.yaml
+      kubescape scan framework nsa *.yaml
       ```
       <br>
       -----------------------------------------------------------------------------------------------
@@ -172,25 +173,25 @@ Additional Links:
       4.1 Create deployment
 
       ```
-       kubectl create -f juice-shop-manifests.yaml
+      $ kubectl create -f juice-shop-manifests.yaml
       ```
 
       4.2 Watch service 
       ```
-      kubectl get po --watch
+      $ kubectl get po --watch
       ```
 
       4.3  If want to browse by local pod IP then do following
 
       ```
       # Check service endpoints
-        kubectl get svc juice-shop
+      $ kubectl get svc juice-shop
       # get internal IP 
-      kubectl get no -o wide | awk '{print $6}'
+      $ kubectl get no -o wide | awk '{print $6}'
       ```
       4.4 If you want to browse via local host then do the following 
       ```
-      kubectl port-forward svc/juice-shop-manifests 8080:8000  
+      $ kubectl port-forward svc/juice-shop 8080:8000  
       ```
       <br>
       -----------------------------------------------------------------------------------------------
@@ -316,7 +317,7 @@ Additional Links:
 
       5.2.2 The results are held in the pod's logs
       ```
-      kubectl logs kube-bench . . .
+      kubectl logs kube-bench-[rest from get pods]
       ```
 
       5.3 Kube Hunter 
@@ -326,7 +327,7 @@ Additional Links:
       ```
       $ kubectl create -f https://raw.githubusercontent.com/aquasecurity/kube-hunter/master/job.yaml
       $ kubectl get pods
-      $ kubectl logs <kube-hunter-pod-name>
+      $ kubectl logs kube-hunter-[rest from get pods]
 
       ```
       <br>
@@ -343,6 +344,8 @@ Additional Links:
       ```
 
        6.2 Add the helm repo for Juice-shop
+
+       Make sure to delete previous instance or rename this one to avoid conflicts.  Even better,  build a new cluster and start from scratch.
 
       ```
       $ helm repo add juice https://charts.securecodebox.io

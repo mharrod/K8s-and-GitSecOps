@@ -25,14 +25,14 @@ At a high level, this is what we are looking to achieve:
                                  |             |               |             |              |               |
                               Semgrep        Grype            ZAP          Snyk        Trivy/Snyk          Falco
                              SonarQube      ggshield        SemGrep                                     GLF Stack
-                              Gitleak       Halolint       SonarQube                                    Metasploit
+                             TruffleHog     Halolint       SonarQube                                    Metasploit
                                Snyk       Tekton Chains    Trivy/Snyk                                     Trivy
                                            DockerBench                                                     ZAP
                                             KubeBench
                                            Trivy/Snyk
-                                          Nmap/Nessus
-                                           Nikto/Zap
-                                             Syft
+                                           Nmap/Nessus
+                                            Nikto/Zap
+                                              Syft
 
 ```
 
@@ -118,8 +118,9 @@ We will explore using several deployment methods to deploy and manage containers
 
 * **Kind, Kaniko, and K8s** - Set-up a local Kubernetes development clusters with Kind and deploy images using Kaniko.
 * **Build Images with Kaniko** - Using Kaniko to build images without Docker Daemon
-* **Declarative Continuous Delivery** - Using Declarative Continuous Delivery to manage deployment of an application..
 * **Image Verification in K8s** - Detecting and enforcing the use of signed images in K8s.
+* **Declarative Continuous Delivery** - Using Declarative Continuous Delivery to manage deployment of an application..
+
 <br>
 
 

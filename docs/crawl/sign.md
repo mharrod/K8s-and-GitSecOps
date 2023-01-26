@@ -38,6 +38,7 @@ For our purposes we will use Cosign, but most of the principles introduced are t
 * **Install cosign** - <https://docs.sigstore.dev/cosign/installation/>
 * **Using cosign** - <https://faun.pub/signing-container-images-using-cosign-7df8f61456ad>
 * **Using cosign for image signing** - <https://github.com/sigstore/cosign>
+* **Cosign and SBOM** - <https://edu.chainguard.dev/open-source/sigstore/cosign/how-to-sign-an-sbom-with-cosign/>
 
 
 Install yq wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
@@ -54,7 +55,7 @@ For this sceanrio, we will generate a local signing key and use it to sign image
 1. Install Local Registry (no Authentication)
 2. Sign Image with Cosign and verify signature
 3. Sign Image and Verify signature
-4. Generate, sign, and attach SBOM
+4. Generate, attach, sign, and download SBOM
 
 **Solution**
 
@@ -66,32 +67,33 @@ For this sceanrio, we will generate a local signing key and use it to sign image
       1.1 Install/start registry 
 
       ```
-      $ docker run -d -p 5001:5001 --restart always --name registry registry:2
+      $ docker run -d -p 5000:5000 --restart always --name registry registry:latest
+
 
       ```
       1.2 Build and tag image 
 
       ```
       $ docker build -t studentbook .
-      $ docker image tag studentbook localhost:5001/studentbook:1.0
+      $ docker image tag studentbook localhost:5000/studentbook:1.0
       ```
 
       1.3 Push image to the local registry 
       ```
-      $ docker push localhost:5001/studentbook:1.0
+      $ docker push localhost:5000/studentbook:1.0
       ```
 
       1.4 Inspect the image
       ```
-      $ skopeo copy --tls-verify=false docker://localhost:5001/studentbook oci-archive:stud.tar
-      $ skopeo inspect --tls-verify=false docker://localhost:5001/studentbook
+      $ skopeo copy --src-tls-verify=false docker://localhost:5000/studentbook:1.0 oci-archive:stud.tar
+      $ skopeo inspect --tls-verify=false docker://localhost:5000/studentbook:1.0
 
       ```
 
       1.5 Run image from local registry 
 
       ```
-      $ docker pull localhost:5001/studentbook:1.0
+      $ docker pull localhost:5000/studentbook:1.0
       $ docker run -p 8090
       ```
 
@@ -125,9 +127,10 @@ For this sceanrio, we will generate a local signing key and use it to sign image
       3.0 Sign image and verify signature
 
       ```
-      $ cosign sign --key cosign.key localhost:5001/studentbook/1.0
-      $ cosign triangulate localhost:5001/studentbook:1.0 
-      $ cosign verify localhost:5001/studentbook:1.0  
+      $ cosign sign --key cosign.key localhost:5000/studentbook/1.0
+      $ cosign triangulate localhost:500/studentbook:1.0 
+      $ cosign verify localhost:5000/studentbook:1.0 --key cosign.pub
+
 
       ```
 
@@ -135,21 +138,42 @@ For this sceanrio, we will generate a local signing key and use it to sign image
 
       3.1 Generate SBOM with Syft
       ```
-      $ syft packages localhost:5001/studentbook:1.0 --scope all-layers -o spdx > sb-image.spdx
+      $ syft packages localhost:5000/studentbook:1.0 --scope all-layers -o spdx > sb-image.spdx
 
       ```
 
-      3.2 Attatch SBOM to container package 
+      3.2 Attach SBOM to container package 
 
       ```
-      $ cosign attach sbom --sbom sb-image.spdx localhost:5001/studentbook:1.0
+      $ cosign attach sbom --sbom sb-image.spdx localhost:5000/studentbook:1.0
+
+      You will get something similar to the following.  You will need the SHA for the next step  
+      $ Uploading SBOM file for [localhost:5000/studentbook:1.0] to [localhost:5000/studentbook:sha256-14cc75d664cbe30b77eb248b90ead399975acca02fa06c748d59e9de4657cf23.sbom] with mediaType [text/spdx].
+
       ```
+
+      3.3 Sign SBOM 
+
+      ```
+      $ cosign sign --key cosign.key localhost:5000/studentbook:1.0:sha256-14cc75d664cbe30b77eb248b90ead399975acca02fa06c748d59e9de4657cf23.sbom
+      $ cosign verify --key cosign.pub localhost:5000/studentbook:sha256-14cc75d664cbe30b77eb248b90ead399975acca02fa06c748d59e9de4657cf23.sbom
+
+      ```
+
+      3.4 Download SBOM 
+      ```
+      $ cosign download sbom localhost:5000/studentbook --output-file=sbom.spdx
+
+      ```
+
+
 
 
 ## Additional Challenges
 
 1. **Add Authentication** - Add authentication to your local registry 
 2. **Install a and use a Vault** - Store and use secrets for cosign from a vault
+3. **Use SBOM to scan with Trivy** - Use the SBOM to scan with Trivy.  Note, Trivty may only work with Cyclone-DX.
 
 
 
