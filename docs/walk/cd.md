@@ -39,15 +39,6 @@ For our purposes, we will use ArgoCD and ArgoCD Image Updater for CD and image u
 Work in progress ...
 
 
-## Supplementary Learning Material
-
-<iframe width="1120" height="630" src="https://www.youtube.com/embed/M_-r6vUKevQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-
-Work in progress ...
-
-
 ## Scenario
 
 Work in progress ...
