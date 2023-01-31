@@ -119,7 +119,7 @@ We will explore using several deployment methods to deploy and manage containers
 * **Kind, Kaniko, and K8s** - Set-up a local Kubernetes development clusters with Kind and deploy images using Kaniko.
 * **Build Images with Kaniko** - Using Kaniko to build images without Docker Daemon
 * **Image Verification in K8s** - Detecting and enforcing the use of signed images in K8s.
-* **Declarative Continuous Delivery** - Using Declarative Continuous Delivery to manage deployment of an application..
+* **Networking and Environments** - Leveraging Kubernetes namespaces and networking for environment seperation.
 
 <br>
 
@@ -138,10 +138,7 @@ Reader will leverage Tekton to build a repeatable cloud native CI/CD system to d
 
 For this final step, we are going to go deeper into the end-to-end securing of the GitSecOps pipeline. 
 
-* **Violent Pentesting** - Use common tooling to complete a small pentest exercise
-* **Runtime Security** - Implement basic runtime security for Kubernetes 
-* **Security Chaos Engineering** - Small example of chaos engineering
-* **Security testing in production** - Run through security testing in a blue/green deployment scenario
+- TBD
   
 
 ### 2.2 Capstone

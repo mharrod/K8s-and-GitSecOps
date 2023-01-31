@@ -61,5 +61,5 @@ Here is a summary of some of the ways that GitSecOps can be used to improve the 
 * **K8s, Kind and Security Scanning** - Set-up a local Kubernetes development clusters with Kind and deploy images using Kaniko.
 * **Build Images with Kaniko** - Using Kaniko to build images without Docker Daemon
 * **Image Verification in K8s** - Detecting and enforcing the use of signed images in K8s.
-* **Declarative Continuous Delivery** - Using Declarative Continuous Delivery to manage deployment of an application..
+* **Networking and Environments** - Leveraging Kubernetes namespaces and networking for environment seperation.
 

@@ -3,6 +3,11 @@
 ## Introduction
 
 This section looks at the role Kubernetes and everything else we have done up to this point can play a role in ensuring the security and efficacy of our release management process.  A release management process typically includes multiple environments: development, testing, staging, and production.   Security testing should be performed in each environment of the release management process to ensure that vulnerabilities are identified and addressed before the software is deployed to production.  The specific types of security testing that are performed in each environment may vary, but some approaches we will explore are depicted below: 
+
+
+Kustomize 
+
+
 <br>
 
 ```
@@ -46,9 +51,10 @@ Many recommend not doing security testing in production.  However, at the very l
 
 Here are some more of the scenarios we will explore
 
-* **Violent Pentesting** - Use common tooling to complete a small pentest exercise
-* **Runtime Security** - Implement basic runtime security for Kubernetes 
-* **Security Chaos Engineering** - Small example of chaos engineering
-* **Security testing in production** - Run through security testing in a blue/green deployment scenario
+- TBD
+
+
+
+
 
 
