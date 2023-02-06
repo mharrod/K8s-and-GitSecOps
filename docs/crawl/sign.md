@@ -31,30 +31,28 @@ There are several options for signing containers, each with its own advantages a
 
 For our purposes we will use Cosign, but most of the principles introduced are transferable to GPG or other mechanisms. 
 
+------------------------------------------------------------------------------------
+
 ## Supplementary Learning Material 
 
 <iframe width="1120" height="630" src="https://www.youtube.com/embed/HLb1Q086u6M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+#### Additional links:
 
 * **Install cosign** - <https://docs.sigstore.dev/cosign/installation/>
 * **Using cosign** - <https://faun.pub/signing-container-images-using-cosign-7df8f61456ad>
 * **Using cosign for image signing** - <https://github.com/sigstore/cosign>
 * **Cosign and SBOM** - <https://edu.chainguard.dev/open-source/sigstore/cosign/how-to-sign-an-sbom-with-cosign/>
 
-
-Install yq wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
-    chmod +x /usr/bin/yq
-
-    https://github.com/mikefarah/yq
-
-
+--------------------------------------------------------------------------------------
 
 ## Scenario 
 
 For this sceanrio, we will generate a local signing key and use it to sign images.  of course, in the real world private keys would be stored in a much more secure manner.  
 
-1. Install Local Registry (no Authentication)
-2. Sign Image with Cosign and verify signature
-3. Sign Image and Verify signature
+1. Install local registry (no Authentication)
+2. Sign image with Cosign and verify signature
+3. Sign image and verify signature
 4. Generate, attach, sign, and download SBOM
 
 **Solution**
@@ -68,8 +66,6 @@ For this sceanrio, we will generate a local signing key and use it to sign image
 
       ```
       $ docker run -d -p 5000:5000 --restart always --name registry registry:latest
-
-
       ```
       1.2 Build and tag image 
 
@@ -166,13 +162,12 @@ For this sceanrio, we will generate a local signing key and use it to sign image
 
       ```
 
-
-
+----------------------------------------------------------------------------------------
 
 ## Additional Challenges
 
 1. **Add Authentication** - Add authentication to your local registry 
-2. **Install a and use a Vault** - Store and use secrets for cosign from a vault
+2. **Install a and use a vault** - Store and use secrets for cosign from a vault
 3. **Use SBOM to scan with Trivy** - Use the SBOM to scan with Trivy.  Note, Trivty may only work with Cyclone-DX.
 
 

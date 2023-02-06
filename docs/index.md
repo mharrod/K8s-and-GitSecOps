@@ -128,18 +128,21 @@ We will explore using several deployment methods to deploy and manage containers
 
 Reader will leverage Tekton to build a repeatable cloud native CI/CD system to deploy the application on Kubernetes.
 
-* **Tasks** - Through a simple Hello World we learn the fundamentals of Tekton 
-* **Pipelines** - Expand on our use of Tekton and build an end-to-end build pipeline for the StudentBook application. 
-* **Incorporating Security Testing** - Add and automate the security testing we completed in the Crawl and Walk sections.
-* **Enforcing Integrity with Tekton** - Using Tekton to enforce security through out the build and deploy phases.
+* **Pipeline as code** - Use pipeline as code to automate a security scan of a container image. 
+* **Tekton Bundles** - Create and published signed Tekton bundles.
+* **Tekton Builds** - Using Tekton and Kaniko to build, sign an push an image to an OCI Registry. 
+* **Tekton Triggers** - Using Tekton triggers to automatically update application on Git commit. Also using Kyverno to enforce the use of verified images and Tekton bundles on K8s.
 <br>
 
 **Fly:**
 
 For this final step, we are going to go deeper into the end-to-end securing of the GitSecOps pipeline. 
 
-- TBD
-  
+* **Using Kustomize** - How to use Kustomize to simplify K*s deployment in a declarative way 
+* **ArgoCD** - Incorporating ArgoCD to provide declarative continuous deployment.
+* **Dedicated security testing** - Implementing and using a dedicated security namespace in the testing phase. 
+* **Security testing in production** - Using blue/green testing deployment approaches to facilitate rigorous security testing in production. 
+
 
 ### 2.2 Capstone
 The Capstone project is an opportunity to apply all the principles discovered during the workshop to a greenfield application.  Readers are encouraged to use the application provided, but there is also the opportunity to use their own application. 

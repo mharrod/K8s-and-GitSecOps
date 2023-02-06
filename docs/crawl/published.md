@@ -20,6 +20,7 @@ An even better approach is to re-build 3rd party container images using the Dock
 
 Overall, building an image from a Dockerfile can provide you with more control and flexibility when deploying your applications with Docker.
 
+-------------------------------------------------------------------------
 
 ## Supplementary Learning Material
 
@@ -38,20 +39,21 @@ Container Security Testing:
 * Testing with Trivy - <https://semaphoreci.com/blog/continuous-container-vulnerability-testing-with-trivy>
 * Containers and Semgrep - <https://kondukto.io/blog/docker-security-best-practices-with-semgrep>
 * Dockerfile best practices - <https://github.com/kondukto-io/dockerfile-bestpractice-rules>
-* Using hadolint - <https://github.com/hadolint/hadolint>
+* Using Hadolint - <https://github.com/hadolint/hadolint>
 * Hadolint - <https://www.containiq.com/post/hadolint>  
 * Syft and Grype - <https://medium.com/rahasak/container-vulnerability-scan-with-syft-and-grype-f4ec9cd4d7f1>
 * Trivy <https://medium.com/ascentic-technology/secure-container-images-with-trivy-1ef12b5b9b4d>
 
+----------------------------------------------------------------------------------------
 
 ## Scenario 
 
-1. Inspect Image on GitHub Repo with Trivy
+1. Inspect image on GitHub Repo with Trivy
 2. Inspect the Dockerfile with Hadolint
-3. Check for Secrets with gggshield
+3. Check for secrets with gggshield
 4. Inspect with Skopeo on DockerHub
-5. Download Image as OCI Archive and scan with Grype 
-6. Run Software Composite Analysis with Syft
+5. Download image as OCI archive and scan with Grype 
+6. Run software composite analysis with Syft
 7. Pull Juiceshop image and rerun security testing
 8. Check for misconfigurations with DockerBench  
 9. Run container and scan with NMAP and Nikto 
@@ -106,11 +108,11 @@ Container Security Testing:
 
       ```
 
-      5.Download Image as OCI Archive and scan with Grype - Downloading as an archived TAR to a isolated location. Not pulling the image just yet. We want to check for known vulnerabilities. 
+      5.Download Image as OCI archive and scan with Grype - Downloading as an archived TAR to a isolated location. Not pulling the image just yet. We want to check for known vulnerabilities. 
 
       ```
 
-      # Copy image to local OCI Archive
+      # Copy image to local OCI archive
       $ skopeo copy docker://bkimminich/juice-shop oci-archive:$JUICE_HOME/juice-shop.tar 
 
       # Install Grype
@@ -124,16 +126,16 @@ Container Security Testing:
 
       ```
 
-      6.Run Software Composite Analysis with Syft - Output a SBOM for use in upstream process and to see what dependencies are in play. 
+      6.Run software composite Aaalysis with Syft - Output a SBOM for use in upstream process and to see what dependencies are in play. 
 
       ```
       # Install Syft
       $ curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
-      # Generate SBOM from Image
+      # Generate SBOM from image
       $ syft packages docker.io/bkimminich/juice-shop --scope all-layers  -o json
 
-      # Generate SBOM from Archieve 
+      # Generate SBOM from archive 
       $ syft packages oci-archive:/tmp/juice/juice-shop.tar --scope all-layers  -o json | tee $JUICE_HOME/outputs/syft.txt
 
 
@@ -190,6 +192,7 @@ Container Security Testing:
 
       ```
 
+-------------------------------------------------------------------------------------
 
 ## Additional Challenges
 

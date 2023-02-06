@@ -43,6 +43,7 @@ There are several reasons why it can be beneficial to build containers in multip
 
 Overall, building containers in multiple stages can provide a number of benefits, including smaller image size, improved security, simplified maintenance, and improved build efficiency.
 
+------------------------------------------------------------------------------------
 
 ## Supplementary Learning Material  
 
@@ -54,21 +55,22 @@ Overall, building containers in multiple stages can provide a number of benefits
 * Buildah as a cli tool - <https://hackernoon.com/>
 
 * Getting started Buildah - <(https://opensource.com/article/18/6/getting-started-buildah>
-* Buildah and OCI Images - <https://www.linode.com/docs/guides/using-buildah-oci-images/>
+* Buildah and OCI images - <https://www.linode.com/docs/guides/using-buildah-oci-images/>
 * Github buildah tutorial - <https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md)> 
-* Docker Multistage - <https://docs.docker.com/build/building/multi-stage>  
+* Docker multi-stage - <https://docs.docker.com/build/building/multi-stage>  
 * Buildah vs Kaniko - <https://earthly.dev/blog/docker-vs-buildah-vs-kaniko/>
 * Distroless - <https://github.com/GoogleContainerTools/distroless>
-* distroless - <https://medium.com/@luke_perry_dev/dockerizing-with-distroless-f3b84ae10f3a>
+* Distroless - <https://medium.com/@luke_perry_dev/dockerizing-with-distroless-f3b84ae10f3a>
 
+-----------------------------------------------------------------------------------
 
 ## Scenario
 
-1. Install and Test Student API Application 
+1. Install and test Student API Application 
 2. Create a Basic Dockerfile
-3. Create a Multistage DockerFile 
-4. Create a Single Stage Buildah File
-5. Creat a MultiStage Buildah File
+3. Create a multistage DockerFile 
+4. Create a single stage Buildah File
+5. Creat a multiStage Buildah File
 6. Push image to Dockerhub 
 
 
@@ -76,7 +78,7 @@ Overall, building containers in multiple stages can provide a number of benefits
 
 ??? solve "Solution"
 
-      1.Install and Test Student API Application
+      1.Install and test Student API Application
 
       1.1 Set-up environment
       ```
@@ -94,7 +96,7 @@ Overall, building containers in multiple stages can provide a number of benefits
 
       ```
 
-      1.2 Create Application
+      1.2 Create application
 
       ```
       cat <<'EOF' >>app.py
@@ -190,7 +192,7 @@ Overall, building containers in multiple stages can provide a number of benefits
       $curl -X 'DELETE' http://127.0.0.1:8090/students/3
       ```
 
-      2.0 Create a Basic Dockerfile 
+      2.0 Create a basic Dockerfile 
 
       ```
       cat <<'EOF' >>Dockerfile
@@ -218,7 +220,7 @@ Overall, building containers in multiple stages can provide a number of benefits
 
       ```
 
-      3.0 Create a Multistage DockerFile 
+      3.0 Create a multistage DockerFile 
 
       ```
       cat <<'EOF' >>Dockerfile
@@ -255,7 +257,7 @@ Overall, building containers in multiple stages can provide a number of benefits
 
       ```
 
-      4.0 Create a Single Stage Buildah File 
+      4.0 Create a single stage Buildah File 
 
       ```
       cat <<'EOF' >>single-buildah.sh
@@ -314,10 +316,11 @@ Overall, building containers in multiple stages can provide a number of benefits
       $ docker push 
       ```
 
+----------------------------------------------------------------------------
 
 ## Additional Challenges
 
-1. **Security Tooling Container** - Building your own security tooling container can be useful.  Using [Hacker Container](https://github.com/madhuakula/hacker-container) as inspiration, craft your own security tooling container that you can use for future endeavors.  Some design consideration are:
+1. **Security tooling container** - Building your own security tooling container can be useful.  Using [Hacker Container](https://github.com/madhuakula/hacker-container) as inspiration, craft your own security tooling container that you can use for future endeavors.  Some design consideration are:
     * Conatiner should be built using a multistage process
     * Keep the container as lean as possible
     * Consider implementing a flag that will only add tools for a given a situation.  For example, you could have a light, medium, and heavy option that includes more or less tooling depending on the flag. 

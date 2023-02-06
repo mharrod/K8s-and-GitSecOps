@@ -4,8 +4,9 @@ The software deployment process involves different environments with different p
 
 Kubernetes can be used to manage the deployment of applications across different environments by creating separate namespaces for each environment. For example, you can create a namespace for "development", another for "stage", and another for "production". Then you can create deployment objects, service objects, and other Kubernetes resources within each namespace to represent the application components.
 
-In this scenario, we are going to create two clusters.  One cluster will be for preprod (QA and security testing) and another cluster for stage and production.  We will then experiment with how we can create separation for these environments and leverage Kyverno to enforce network policies.
+In this scenario, we are going to create two clusters.  One cluster will be called "preprod" with the namespaces QA and sectest.  The second cluster will be named "prod"  and include the name stages for stage and prod.  We will then experiment with how we can create separation for these environments and leverage Kyverno to enforce network policies.
 
+------------------------------------------------------------------------------------
 
 ## Supplementary Learning material
 
@@ -19,10 +20,14 @@ Additional Links:
 * **Calico k8s Policy basics** - <https://docs.projectcalico.org/security/tutorials/kubernetes-policy-basic>
 * **K8s Network Policy** - <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
 
+------------------------------------------------------------------------------
+
 ## Scenario
 
 Kind (as with minikube and most other local Kubernetes environments) uses kindnetd as the default for the CNI.  This CNI is too basic to complete the network policy exercise in the chapter.  As a result, we will install Calico as our CNI.  If you notice in the configuration files above, we set disableDefaultCNI: true.  This setting ensured that the default CNI was not installed and that we could layer on our own. See the following link if you want to better understand CNI https://www.tigera.io/learn/guides/kubernetes-networking/kubernetes-cni
 
+
+#### Task 1 - QA and Sectest
 1. Deploy a cluster named prepod witj Calico CNI installed 
 2. Switch to prepod cluster and create environment Namespaces qa and sectest.
 3. Deploy a Curl application  to both QA and sectest 
@@ -30,13 +35,6 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
 5. try to curl from both qa and sectest
 6. Apply a netwrok policy to prevent all pods outside qa from accessing qa
 7. Try to curl NGNIX webserver from each environment (sectest fails and qa passes)
-8. Switch to Prod Cluster and Install Calico 
-9. Install Kyverno and apply default deny-all policy to all namespaces created 
-10. Set-up environment as above (using stage and prod namespace)
-11. Try to curl from both stage and prod (should both fail)
-12. Create network policies to permit accessing web server in prod from stage
-13. Try to curl from both stage and prod (stage fails and prod works)
-14. Destroy environment 
 
 ??? Harma "kubetx and kubens"
 
@@ -57,9 +55,7 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
         ```
 
 
-??? Harma "Solution" 
-
-
+??? solve "Solution Task 1" 
 
      1.O Deploy a cluster named prepod and a cluster named prod with Calico CNI installed
 
@@ -272,27 +268,38 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
 
      ```
 
+#### Task 2 - Prod and Stage
+1. Switch to Prod Cluster and Install Calico 
+2. Install Kyverno and apply default deny-all policy to all namespaces created 
+3. Set-up environment as above (using stage and prod namespace)
+4. Try to curl from both stage and prod (should both fail)
+5. Create network policies to permit accessing web server in prod from stage
+6. Try to curl from both stage and prod (stage fails and prod works)
+7. Destroy environment 
 
-     8.0  Switch to Prod Cluster and Install Calico 
+??? solve "Solution Task 2"
 
-     8.1 - Make sure we are on the prod cluster
+
+     1.0  Switch to Prod Cluster and Install Calico 
+
+     1.1 - Make sure we are on the prod cluster
 
      ```
      kubectx kind-prod
      ```
 
-     8.2 install the Tigera operator on the cluster.
+     1.2 install the Tigera operator on the cluster.
 
      ```
      $ kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
      ```
 
-     8.3 Check calico
+     1.3 Check calico
      ```
      kubectl get pod -n calico-system
      ```
 
-     8.3 Apply the configuration
+     1.4 Apply the configuration
 
      ```
      kubectl apply -f - <<EOF
@@ -312,15 +319,15 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
      ```
 
 
-     9.0 Install Kyverno and apply dedault deny-all policy to all namespaces created 
+    2.0 Install Kyverno and apply dedault deny-all policy to all namespaces created 
 
-    9.1 Install Kyverno (Note this is a cluster wide policy )
+    2.1 Install Kyverno (Note this is a cluster wide policy )
 
     ```
      helm install kyverno kyverno/kyverno -n kyverno --create-namespace
     ```
 
-     9.2 apply kyverno policy
+     2.2 apply kyverno policy
      ```
      kubectl apply  -f - <<EOF
      apiVersion: kyverno.io/v1
@@ -365,15 +372,15 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
      EOF
      ```
 
-     10.0  Set-up environment as above (using stage and prod namespace)
+     3.0  Set-up environment as above (using stage and prod namespace)
 
-     10.1 Make e we are on the prepod cluster 
+     3.1 Make e we are on the prepod cluster 
 
      ```
      kubectx kind-prod
      ```
 
-     10.2 Create environment Namespaces (qa and prod)
+     3.2 Create environment Namespaces (qa and prod)
 
      ```
      $ kubectl create namespace stage
@@ -382,7 +389,7 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
 
      ```
 
-     10.3 Deploy curl to the qa and sectest Namespaces
+     3.3 Deploy curl to the qa and sectest Namespaces
 
 
      ```
@@ -419,7 +426,7 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
      ```
 
 
-     10.4  Deploy an NGNIX webserver in prod
+     3.4  Deploy an NGNIX webserver in prod
 
     ```
      kubectl apply -n prod -f - <<EOF
@@ -439,9 +446,9 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
     ```
 
 
-     11.0 Try to curl from both stage and prod (should both fail)
+     4.0 Try to curl from both stage and prod (should both fail)
 
-     11.1 Get Web IP
+     4.1 Get Web IP
 
      ```
      $ kubectl describe pod web -n prod | grep IP 
@@ -449,13 +456,13 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
 
      ```
 
-     11.2 try to curl from both qa and sectest 
+     4.2 try to curl from both qa and sectest 
     ```
      $ kubectl -n stage  exec curl-pod -- curl --max-time 5.5 -I $WEB_IP_PROD
      $ kubectl -n prod  exec curl-pod -- curl --max-time 5.5 -I $WEB_IP_PROD
     ```
 
-     12.0 Create network policies to permit accessing web server in prod from prod
+     5.0 Create network policies to permit accessing web server in prod from prod
 
     ```
      kubectl apply  -f - <<EOF
@@ -485,21 +492,21 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
 
     ```
 
-     13.0 Try to curl from both stage and prod (stage fails and prod works)
+    6.0 Try to curl from both stage and prod (stage fails and prod works)
 
-    13.1 Get IP Address
+    6.1.1 Get IP Address
      ```
      $ kubectl describe pod web -n prod | grep IP 
      $ export WEB_IP = <IP from above>
      ```
 
-     13.2  from both qa and sectest 
+    6.2  from both qa and sectest 
     ```
      $ kubectl -n stage  exec curl-pod -- curl --max-time 5.5 -I $WEB_IP_PROD
      $ kubectl -n prod  exec curl-pod -- curl --max-time 5.5 -I $WEB_IP_PROD
     ```
 
-     14.0 Destroy environment 
+    7.0 Destroy environment 
 
      ```
 
@@ -516,9 +523,9 @@ Kind (as with minikube and most other local Kubernetes environments) uses kindne
      $ kind delete clusters --all  
      ```
 
+---------------------------------------------------------------------------------------------------
 
 # Additional Challenges
-* **Kyverno** - In the prod cluster create stage and prod namespaces 
-* **Practice kubernetes stuff** - 4. Deploy the Kubernetes guestbook application to the qa and sectest environment.
+Work in progress...
 
 

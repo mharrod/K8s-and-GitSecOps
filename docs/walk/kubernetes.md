@@ -8,6 +8,8 @@ Kubernetes also provides load balancing, automatic scaling, and self-healing to 
 
 To develop with Kubernetes clusters locally, we will use KIND Kubernetes IN Docker (kind).  Overall, KIND is a powerful tool for local Kubernetes development because it is easy to set up and use, provides an isolated environment for testing and debugging, and integrates well with other tools.  Other options, such as minikube, work equally as well. 
 
+-------------------------------------------------------------------------------------
+
 ## Supplementary Learning Materials
 
 <iframe width="1120" height="630" src="https://www.youtube.com/embed/s_o8dwzRlu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -17,7 +19,7 @@ Additional Links:
 * Kubernetes and Kind - <https://www.baeldung.com/ops/kubernetes-kind>
 - Kubernetes and Kind - <https://phoenixnap.com/kb/kubernetes-kind>
 - Kubernetes cluster development with kind - <https://faun.pub/creating-a-kubernetes-cluster-for-development-with-kind-189df2cb0792>
-* Kind with podman - <https://www.linkedin.com/pulse/kind-podman-ubuntu-2004lts-ludger-pottmeier>
+* Kind with Podman - <https://www.linkedin.com/pulse/kind-podman-ubuntu-2004lts-ludger-pottmeier>
 * Kind & K8s lab - <https://cloudyuga.guru/hands_on_lab/kind-k8s>
 * Juiceshop on Kubernetes - <https://networkandcode.hashnode.dev/run-owasp-juice-shop-as-a-kubernetes-service>
 * Ingress for Kubernetes - <https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx>
@@ -25,16 +27,18 @@ Additional Links:
 * Security scanning for K8s - <https://mattermost.com/blog/the-top-7-open-source-tools-for-securing-your-kubernetes-cluster/#kubeaudit>
 * Helm - <https://helm.sh/docs/intro/quickstart/>
 
+-----------------------------------------------------------------------------------
+
 ## Scenario 
 
-1. Create a named Cluster called JuiceShop
-2. Create or copy deployment manifest and service manifest and sabe for Juiceshop (provided above)
-3. Scan Juice Manifests with Kubescape
-4. Install Juice shop with manifests
-5. Complete a security scan of the Kubernetes environment (Include: Kubesecurity bench, Kubeaudit, Kubescape)
-6. Fetch Juice-Shop Helm Chart and scan with Checkov and Helm lint 
-7. Install JuiceShop Application with Helm chart
-8. Install StudentBook Using manifests
+1. Create a named Cluster called JuiceShop with NGNIX support.
+2. Create or copy deployment manifest and service manifest and sabe for Juiceshop (provided above).
+3. Scan Juice Manifests with Kubescape.
+4. Install Juice shop with manifests.
+5. Complete a security scan of the Kubernetes environment (Include: Kubesecurity bench, Kubeaudit, Kubescape).
+6. Fetch Juice-Shop Helm Chart and scan with Checkov and Helm lint.
+7. Install JuiceShop Application with Helm chart.
+8. Install StudentBook using manifests.
 
 ??? Harma "Juice-Shop Manifests"
 
@@ -367,6 +371,7 @@ Additional Links:
       $ helm install juice-shop-helm juice/juice-shop
       ```
 
+----------------------------------------------------------------------------------
 
 ## Additional Challenges
 1. **Additional Vulnerability Scanning** - Install Scanbox and run the security scans we did in previous section with it

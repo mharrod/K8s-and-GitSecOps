@@ -19,8 +19,7 @@ Once this policy is in place, any attempt to deploy an unsigned image will be re
 
 We are also going to explore security mechanisms that can be used on the container registry to further enhance the security of the GitSeCOps process.  In this particular case, we will use a local instance of Harbor to demonstrate best practices. 
 
-
-
+------------------------------------------------------------------------------------------------
 
 ## Supplementary Learning Material
 
@@ -40,7 +39,7 @@ We are also going to explore security mechanisms that can be used on the contain
 * Kyverno and cosign - <https://technologyconversations.com/2022/10/10/signing-and-verifying-container-images-with-sigstore-cosign-and-kyverno/>
 * Kyverno - <https://rcarrata.com/kubernetes/sign-images-1/>
 
-
+---------------------------------------------------------------------------------------
 
 ## Scenario 
 
@@ -55,7 +54,7 @@ We are also going to explore security mechanisms that can be used on the contain
 
 
 
-??? Harma "Solution"
+??? solve "Solution"
 
       1.0 Create Kind cluster with NGNIX  Support  
 
@@ -238,12 +237,13 @@ We are also going to explore security mechanisms that can be used on the contain
 
       ```
 
+------------------------------------------------------------------------
 
 ## Additional Challenges
 
-* **Use Clair instead of Trivy** - Change the default scanner to Clair or another scanning engine
-* **Add certs to Harbor** - Set-up Hsrbor so that it uses proper certs and TLS 
-* **Use Kaniko** - Build and push the Juiceshop Image to Harbor with Kaniko 
+1. **Use Clair instead of Trivy** - Change the default scanner to Clair or another scanning engine
+2. **Add certs to Harbor** - Set-up Harbor so that it uses proper certs and TLS 
+
 
 
 

@@ -23,6 +23,7 @@ Kaniko is a tool that is well-suited for use in the context of Kubernetes for se
 ??? Harma  "Easy to use:"
     Kaniko is easy to use and integrates well with a variety of tools and environments, including Kubernetes.
 
+----------------------------------------------------------------------------------------
 
 ## Supplementary Learning
 
@@ -41,12 +42,14 @@ Additional Links:
 ## Scenario Steps
 You will need to fork and clone the [StudentBook](https://github.com/mharrod/StudentBook.git) repository 
 
-1. Set-up Kubernetes Cluster with Kind
-2. Configure Kaniko Git Build Context 
-3. Create the Kaniko Pod Manifest apply Kubernetes
-4. Pull and Test the Image in Docker
+1. Set-up Kubernetes cluster with Kind
+2. Configure Kaniko Git build context 
+3. Create the Kaniko Pod Manifest and apply to Kubernetes
+4. Pull and Test the image in Docker
 5. Pull and Test the image in Kubernetes
 6. Rinse and repeat but wih a local Kaniko build context (file)
+
+----------------------------------------------------------------------
 
 ## Suggested Solution
 
@@ -76,7 +79,7 @@ You will need to fork and clone the [StudentBook](https://github.com/mharrod/Stu
 
       ```
       ----------------------------------------------------------------
-      2.0 Create the Container Registry Secret
+      2.0 Create the container registry Secret
       <br>
       <br>
       In an ideal scenario, you would be best to use a vault such as hashicorp to store variables.  However, for now, we will just use system environment to store variables and explore our other options at a later date. PLEASE NOTE, secrets don this way are not really secret (not encrypted just encoded)
@@ -117,7 +120,7 @@ You will need to fork and clone the [StudentBook](https://github.com/mharrod/Stu
        
 
       ----------------------------------------------------------------
-      3.0 Create the Kaniko Pod Manifest apply kubernetes
+      3.0 Create the Kaniko pod manifest and apply to kubernetes
 
       3.1 Git clone studentbook
       ```
@@ -156,13 +159,13 @@ You will need to fork and clone the [StudentBook](https://github.com/mharrod/Stu
 
       ```
       ----------------------------------------------------------------
-      4 Pull and Test the Image in Docker
+      4 Pull and test the image in Docker
 
       ```
       docker run -it mharrod/studentbook-kaniko-repo:1.0
       ```
       ----------------------------------------------------------------
-      5.0 Pull and Test the image in Kubernetes
+      5.0 Pull and test the image in Kubernetes
 
       ```
       kubectl apply -f - <<EOF
@@ -187,12 +190,12 @@ You will need to fork and clone the [StudentBook](https://github.com/mharrod/Stu
       ```
 
       ----------------------------------------------------------------
-      6.0 Configure Kaniko Local Build Context 
+      6.0 Configure Kaniko local build context 
 
       This is a less ideal way to do it, but shows how it can work without Github. Make sure you are working in your Studentbook repo that you cloned earlier
 
 
-      6.1  Prepare Local Cluster
+      6.1  Prepare local cluster
       ```
       $docker ps
       $docker exec -it [contaniner:id] /bin/sh 
@@ -280,10 +283,12 @@ You will need to fork and clone the [StudentBook](https://github.com/mharrod/Stu
       kubectl get pods
       ```
 
+----------------------------------------------------------------
+
 ## Additional Challenges
 
-* Try podma/buildah 
-* Write a webhook that automatically makes this happen on change 
+1. **Try podman/buildah** - Use Podman and Buildah to deploy application to Kubernetes. 
+2. **Write a webhook** - Automate the kaniko build when a change/update happens to the dockerfile in the git repo.
 
 
 

@@ -1,4 +1,7 @@
 nav:
 - index.md
-
+- pac.md
+- bundle.md
+- build.md
+- triggers.md
 - ...

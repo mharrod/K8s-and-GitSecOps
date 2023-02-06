@@ -1,3 +1,7 @@
 nav:
 - index.md
+- kustomize.md
+- argo.md
+- bi.md
+- bg.md
 - ...

@@ -1,4 +1,4 @@
-# Run(WIP)
+# Run
 
 ## Introduction
 
@@ -62,7 +62,7 @@ Some of the benefits of using Tekton for building CI/CD pipelines include:
 
 Here are the scenarios we will explore::
 
-* **Tasks** - Through a simple Hello World we learn the fundamentals of Tekton 
-* **Pipelines** - Expand on our use of Tekton and build an end-to-end build pipeline for the StudentBook application. 
-* **Incorporating Security Testing** - Add and automate the security testing we completed in the Crawl and Walk sections.
-* **Enforcing Integrity with Tekton** - Using Tekton to enforce security through out the build and deploy phases.
+* **Pipeline as code** - Use pipeline as code to automate a security scan of a container image. 
+* **Tekton Bundles** - Create and published signed Tekton bundles.
+* **Tekton Builds** - Using Tekton and Kaniko to build, sign an push an image to an OCI Registry. 
+* **Tekton Triggers** - Using Tekton triggers to automatically update application on Git commit. Also using Kyverno to enforce the use of verified images and Tekton bundles on K8s.

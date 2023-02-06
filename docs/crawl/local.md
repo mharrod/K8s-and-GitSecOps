@@ -22,6 +22,8 @@ It is important to note that security scanning is not a one-time process.  It sh
 
 For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/juice/outputs).  In the future, we will redirect outputs to a system that can aggregate, enrich, and normalize the findings.  We will not do anything with these findings now, but reviewing them is a good idea so you can understand the outputs.
 
+-----------------------------------------------------------------------------------
+
 ## Supplementary Learning Material
 
 <iframe width="1120" height="630" src="https://www.youtube.com/embed/jgzjX6FBtBo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -33,11 +35,12 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
 * Pwning Juiceshop - <https://pwning.owasp-juice.shop/> 
 * Learning SemGrep -<https://semgrep.dev/learn>
 * Semgrep and Juiceshop - <https://www.linkedin.com/pulse/brief-semgrep-analyse-juice-shop-bar%C4%B1%C5%9F-ekin-y%C4%B1ld%C4%B1r%C4%B1m>
-* Semgrep Introduction -<https://payatu.com/blog/vishnu.k/semgrep-introduction>
+* Semgrep introduction -<https://payatu.com/blog/vishnu.k/semgrep-introduction>
 * Snyk and Juiceshop - <https://gitlab.com/snyk-rfrazier/juice-shop>
 * NMAP - <https://www.edureka.co/blog/nmap-tutorial/>
 * Nikto - <https://techyrick.com/nikto-2/>
   
+-----------------------------------------------------------------------------
 ## Scenario
 
 1. Install Juice Shop Locally 
@@ -115,6 +118,7 @@ For now, you can dump all the analysis into a folder called outputs (e.g. /tmp/j
     $ docker run frapsoft/nikto -host http://localhost:3000 | tee $JUICE_HOME/outputs/nikto.txt
 
     ```
+--------------------------------------------------------------------------
 
 ## Additional Challenges
 1. **PWN OWASP JuiceShop!** - Complete all the tasks and challenges to completely hack the JuiceShop.  Here is your inspiration https://pwning.owasp-juice.shop/
