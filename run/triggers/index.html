@@ -12,21 +12,21 @@
         <meta name="author" content="Martin Harrod">
       
       
-        <link rel="canonical" href="https://mharrod.github.io/k8s-and-GitSecOps/explorations/">
+        <link rel="canonical" href="https://mharrod.github.io/k8s-and-GitSecOps/run/triggers/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
     
     
       
-        <title>Explorations - K8s and GitSecOps</title>
+        <title>4.Triggering Tekton - K8s and GitSecOps</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c5ef100.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
         
       
     
@@ -41,11 +41,11 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/footer.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/footer.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#explorations" class="md-skip">
+        <a href="#4triggering-tekton" class="md-skip">
           Skip to content
         </a>
       
@@ -87,9 +87,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="K8s and GitSecOps" class="md-header__button md-logo" aria-label="K8s and GitSecOps" data-md-component="logo">
+    <a href="../.." title="K8s and GitSecOps" class="md-header__button md-logo" aria-label="K8s and GitSecOps" data-md-component="logo">
       
-  <img src="../assets/images/logo.png" alt="logo">
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Explorations
+              4.Triggering Tekton
             
           </span>
         </div>
@@ -208,7 +208,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Start
     </a>
   </li>
@@ -223,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../crawl/" class="md-tabs__link">
+      <a href="../../crawl/" class="md-tabs__link">
         Crawl
       </a>
     </li>
@@ -239,7 +239,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../walk/" class="md-tabs__link">
+      <a href="../../walk/" class="md-tabs__link">
         Walk
       </a>
     </li>
@@ -249,13 +249,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../run/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Run
       </a>
     </li>
@@ -271,7 +273,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../fly/" class="md-tabs__link">
+      <a href="../../fly/" class="md-tabs__link">
         Fly
       </a>
     </li>
@@ -284,7 +286,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../capstone/" class="md-tabs__link">
+    <a href="../../capstone/" class="md-tabs__link">
       Capstone
     </a>
   </li>
@@ -293,15 +295,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../explorations/" class="md-tabs__link">
         Explorations
       </a>
     </li>
@@ -329,9 +329,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="K8s and GitSecOps" class="md-nav__button md-logo" aria-label="K8s and GitSecOps" data-md-component="logo">
+    <a href="../.." title="K8s and GitSecOps" class="md-nav__button md-logo" aria-label="K8s and GitSecOps" data-md-component="logo">
       
-  <img src="../assets/images/logo.png" alt="logo">
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     K8s and GitSecOps
@@ -359,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Start
       </a>
     </li>
@@ -399,7 +399,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../crawl/">Crawl</a>
+          <a href="../../crawl/">Crawl</a>
           
             <label for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
@@ -422,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crawl/local/" class="md-nav__link">
+      <a href="../../crawl/local/" class="md-nav__link">
         1.Local Application
       </a>
     </li>
@@ -436,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crawl/published/" class="md-nav__link">
+      <a href="../../crawl/published/" class="md-nav__link">
         2.Containerized Application
       </a>
     </li>
@@ -450,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crawl/scratch/" class="md-nav__link">
+      <a href="../../crawl/scratch/" class="md-nav__link">
         3.Image From Scratch
       </a>
     </li>
@@ -464,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crawl/sign/" class="md-nav__link">
+      <a href="../../crawl/sign/" class="md-nav__link">
         4.Image Signing
       </a>
     </li>
@@ -511,7 +511,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../walk/">Walk</a>
+          <a href="../../walk/">Walk</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -534,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walk/kubernetes/" class="md-nav__link">
+      <a href="../../walk/kubernetes/" class="md-nav__link">
         1.K8s, Kind and Security Scanning
       </a>
     </li>
@@ -548,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walk/kaniko/" class="md-nav__link">
+      <a href="../../walk/kaniko/" class="md-nav__link">
         2.Build Images with Kaniko
       </a>
     </li>
@@ -562,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walk/verification/" class="md-nav__link">
+      <a href="../../walk/verification/" class="md-nav__link">
         3.Image Verification in K8s
       </a>
     </li>
@@ -576,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walk/network/" class="md-nav__link">
+      <a href="../../walk/network/" class="md-nav__link">
         4.Networking and Environments
       </a>
     </li>
@@ -596,12 +596,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -623,7 +625,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../run/">Run</a>
+          <a href="../">Run</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -646,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../run/pac/" class="md-nav__link">
+      <a href="../pac/" class="md-nav__link">
         1.Pipeline as Code
       </a>
     </li>
@@ -660,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../run/bundle/" class="md-nav__link">
+      <a href="../bundle/" class="md-nav__link">
         2.Tekton Bundle
       </a>
     </li>
@@ -674,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../run/build/" class="md-nav__link">
+      <a href="../build/" class="md-nav__link">
         3.Build a container
       </a>
     </li>
@@ -686,11 +688,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../run/triggers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         4.Triggering Tekton
       </a>
+      
     </li>
   
 
@@ -735,7 +747,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../fly/">Fly</a>
+          <a href="../../fly/">Fly</a>
           
             <label for="__nav_5">
               <span class="md-nav__icon md-icon"></span>
@@ -758,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fly/kustomize/" class="md-nav__link">
+      <a href="../../fly/kustomize/" class="md-nav__link">
         1.Kustomize
       </a>
     </li>
@@ -772,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fly/argo/" class="md-nav__link">
+      <a href="../../fly/argo/" class="md-nav__link">
         2.ArgoCD
       </a>
     </li>
@@ -786,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fly/bi/" class="md-nav__link">
+      <a href="../../fly/bi/" class="md-nav__link">
         3.Bifurcated Pipeline
       </a>
     </li>
@@ -800,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fly/bg/" class="md-nav__link">
+      <a href="../../fly/bg/" class="md-nav__link">
         4.Production security testing
       </a>
     </li>
@@ -822,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../capstone/" class="md-nav__link">
+      <a href="../../capstone/" class="md-nav__link">
         Capstone
       </a>
     </li>
@@ -835,14 +847,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
@@ -857,8 +867,8 @@
       
         
         
-        <div class="md-nav__link md-nav__link--index md-nav__link--active">
-          <a href="./">Explorations</a>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../explorations/">Explorations</a>
           
             <label for="__nav_7">
               <span class="md-nav__icon md-icon"></span>
@@ -881,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="proposal/" class="md-nav__link">
+      <a href="../../explorations/proposal/" class="md-nav__link">
         Proposal Template
       </a>
     </li>
@@ -915,42 +925,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#current-areas-in-need-of-exploration" class="md-nav__link">
-    Current areas in need of exploration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requirements-for-publication-to-this-site" class="md-nav__link">
-    Requirements for publication to this site
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#suggested-process" class="md-nav__link">
-    Suggested Process
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -963,62 +937,58 @@
                 
 
 
-<h1 id="explorations">Explorations<a class="headerlink" href="#explorations" title="Permanent link">&para;</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Explorations are the final level of our journey.  The purpose of an exploration is to to dive deeply into a topic around GitSecOps and  and produce a repeatable body of work so that others can learn from your journey. </p>
-<p><strong>Explorations can be iterative!</strong> The exploration process can be repeated as you continue to learn more about the topic and deepen your understanding. It's important to be open-minded and willing to revise your understanding as you gather new information and insights. Exploratory learning can be an iterative process, and it's okay to make mistakes along the way, as long as you learn from them</p>
-<details class="harma">
-<summary>How and Why Explorations work</summary>
-<p>Explorations can be a powerful tool for learning because they allow people to pragmatically interact with the technology.  When people are given the opportunity to explore, they can ask questions, make predictions, and test their ideas in a way that helps them construct their own knowledge and understanding. This can lead to a greater sense of ownership and engagement with the material, which can in turn enhance motivation and learning outcomes. Additionally, explorations can provide a way for people to learn from and with others, which can foster collaboration and social interaction, both of which are important for learning and development.</p>
-<p>Here is a general process for exploratory learning:</p>
+<h1 id="4triggering-tekton">4.Triggering Tekton<a class="headerlink" href="#4triggering-tekton" title="Permanent link">&para;</a></h1>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>It is now time to bring the automation processes one step further and automatically start those pipelines as soon as some changes are pushed to your code repository.  To do this, we will use Tekton Triggers. Triggers is a project of Tekton Pipelines that provides a set of building blocks for creating custom event-driven pipelines, with support for listening to events from a variety of sources, such as Git repositories, message queues, and webhooks. further. With Triggers, we can now s to start our pipeline automatically based on changes.</p>
+<p>This is advantageous to security because it adds automation to security tasks. By automating security tasks and enforcing security policies, Tekton Triggers can help you reduce the risk of security breaches, improve the security of your applications and infrastructure, and ensure that your organization stays compliant with security regulations and standards.</p>
+<p>In addition to this, we are going to use Kyverno to enforce the use of signed Tekton builds, signed images etc before they can be deployed to the Kubernetes cluster.</p>
+<hr />
+<h2 id="supplementary-learning-material">Supplementary learning material<a class="headerlink" href="#supplementary-learning-material" title="Permanent link">&para;</a></h2>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/zVkumUImIao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<h4 id="additional-links">Additional links<a class="headerlink" href="#additional-links" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Identify a topic or concept that you want to learn more about.</li>
-<li>Gather information about the topic through various sources, such as books, articles, lectures, and discussions with experts or peers.</li>
-<li>Formulate questions and hypotheses about the topic.</li>
-<li>Engage in hands-on activities or experiments to test your ideas and gather data.</li>
-<li>Analyze the data and draw conclusions based on your findings.</li>
-<li>Reflect on the learning process and what you have learned.</li>
-<li>Share your findings and insights with others.</li>
+<li><strong>Tekton Triggers</strong> - <a href="https://tekton.dev/docs/triggers/">https://tekton.dev/docs/triggers/</a></li>
+<li><strong>Tekon Triggers Gettind started</strong> - <a href="https://tekton.dev/docs/getting-started/triggers/">https://tekton.dev/docs/getting-started/triggers/</a></li>
+<li><strong>Tekton Triggers Tutorial</strong> - <a href="https://github.com/tektoncd/triggers/blob/main/docs/getting-started/README.md">https://github.com/tektoncd/triggers/blob/main/docs/getting-started/README.md</a></li>
+<li><strong>NGROK</strong> - <a href="https://ngrok.com/download">https://ngrok.com/download</a></li>
+<li><strong>Secure CI/CD with Kyverno</strong> - <a href="https://www.cncf.io/blog/2022/09/14/protect-the-pipe-secure-ci-cd-pipelines-with-a-policy-based-approach-using-tekton-and-kyverno/">https://www.cncf.io/blog/2022/09/14/protect-the-pipe-secure-ci-cd-pipelines-with-a-policy-based-approach-using-tekton-and-kyverno/</a></li>
+<li><strong>Verify Images</strong> - <a href="https://boxboat.com/2021/12/06/secure-supply-chains-kyverno/">https://boxboat.com/2021/12/06/secure-supply-chains-kyverno/</a></li>
+<li><strong>Kyverno Policies</strong> - <a href="https://kyverno.io/policies/?policytypes=Tekton">https://kyverno.io/policies/?policytypes=Tekton</a></li>
 </ul>
-</details>
-<h2 id="current-areas-in-need-of-exploration">Current areas in need of exploration<a class="headerlink" href="#current-areas-in-need-of-exploration" title="Permanent link">&para;</a></h2>
-<p>Here are some of the areas we are currently looking to explore:</p>
-<ul>
-<li>Using an Artifact Server</li>
-<li>Hardening Containers</li>
-<li>Kubernetes PaaS</li>
-<li>Observability with Open Telemtry</li>
-<li>Open Policy Agent (OPA)</li>
-<li>Service Mesh with Istio</li>
-<li>Spiffe and spire </li>
-<li>Knative</li>
-<li>Crossplane</li>
-</ul>
-<h2 id="requirements-for-publication-to-this-site">Requirements for publication to this site<a class="headerlink" href="#requirements-for-publication-to-this-site" title="Permanent link">&para;</a></h2>
-<p>You do not have to aim to have your exploration published on this site.  However, if you do want us to publish here, then your exploration must meet the following minimum requirements:</p>
-<ul>
-<li>The workshop design principles must be incorporated</li>
-<li>Exploration must use the technology stack introduced as part of this workshop (Github, Tekton, ArgoCD, Kind, kubernetes).  You can add variations or show different ways of doing things, but you must include the core stack.  This makes it easier for other to follow along.</li>
-<li>Security must be a core part of the exploration.</li>
-<li>To maintain repeatability, the JuiceShop, StudentBook, or bookinfo application should be used as the underlying application.  .</li>
-<li>A How-to/walkthrough/tutorial guide must be included. Please copy the format of the other explorations already published </li>
-</ul>
-<h2 id="suggested-process">Suggested Process<a class="headerlink" href="#suggested-process" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
+<h3 id="task-1-create-tekton-trigger-for-studentbook">Task 1 - Create Tekton Trigger for StudentBook<a class="headerlink" href="#task-1-create-tekton-trigger-for-studentbook" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Complete research into one of the explorations listed above or embark on a unique one.</li>
-<li>Using the sample proposal template as a guideline. create a README, Presentation, Miro board etc outlining your proposal.  </li>
-<li>Ask some peers to review your proposal for feedback.</li>
-<li>Complete your exploration, make sure to include, howto/tutorial/walkthrough that someone can use to reproduce your exploration in a hands on manner</li>
-<li>Request for your Exploration to be added to the this page. </li>
-<li>If desired, complete a Reflection like you did for the Capstone project. </li>
+<li>Install Tekton Triggers</li>
+<li>Install and configure Ngrok (if using local cluster)</li>
+<li>Create pipeline to be triggered</li>
+<li>Create the trigger</li>
+<li>Configure incoming webhooks</li>
+<li>Expose route and make publicly available</li>
+<li>Configure Github repository </li>
+<li>Trigger the pipeline </li>
 </ol>
+<details class="solve">
+<summary>Solution Task 1</summary>
+<p>Work in progress ...</p>
+</details>
+<h4 id="task-2-use-kyverno-to-enforce-policy-on-tekton">Task 2 - Use Kyverno to enforce policy on Tekton<a class="headerlink" href="#task-2-use-kyverno-to-enforce-policy-on-tekton" title="Permanent link">&para;</a></h4>
+<p>Work in progress . . .</p>
+<details class="solve">
+<summary>Solution Task 2</summary>
+<p>Work in progress ...</p>
+</details>
+<hr />
+<h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
+<p>Work in progress </p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 23, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2023</span>
       
     
   </small>
@@ -1041,7 +1011,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../capstone/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Capstone" rel="prev">
+        <a href="../build/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.Build a container" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1050,20 +1020,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Capstone
+              3.Build a container
             </div>
           </div>
         </a>
       
       
         
-        <a href="proposal/" class="md-footer__link md-footer__link--next" aria-label="Next: Proposal Template" rel="next">
+        <a href="../../fly/" class="md-footer__link md-footer__link--next" aria-label="Next: Fly(WIP)" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Proposal Template
+              Fly(WIP)
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1125,14 +1095,14 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../assets/javascripts/bundle.748e2769.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
-        <script src="../assets/javascripts/tables.js"></script>
+        <script src="../../assets/javascripts/tables.js"></script>
       
     
   </body>

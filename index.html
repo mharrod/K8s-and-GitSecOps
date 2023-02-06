@@ -253,11 +253,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="run/" class="md-tabs__link">
-      Run(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="run/" class="md-tabs__link">
+        Run
+      </a>
+    </li>
+  
 
       
         
@@ -265,11 +269,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="fly/" class="md-tabs__link">
-      Fly(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="fly/" class="md-tabs__link">
+        Fly
+      </a>
+    </li>
+  
 
       
         
@@ -671,10 +679,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="run/">Run</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Run" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Run
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="run/" class="md-nav__link">
-        Run(WIP)
+      <a href="run/pac/" class="md-nav__link">
+        1.Pipeline as Code
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run/bundle/" class="md-nav__link">
+        2.Tekton Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run/build/" class="md-nav__link">
+        3.Build a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run/triggers/" class="md-nav__link">
+        4.Triggering Tekton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -686,10 +791,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="fly/">Fly</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Fly" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Fly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="fly/" class="md-nav__link">
-        Fly(WIP)
+      <a href="fly/kustomize/" class="md-nav__link">
+        1.Kustomize
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fly/argo/" class="md-nav__link">
+        2.ArgoCD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fly/bi/" class="md-nav__link">
+        3.Bifurcated Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fly/bg/" class="md-nav__link">
+        4.Production security testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -982,16 +1184,19 @@ There is no one "best" way to implement GitSecOps, as the specific practices and
 <p><strong>Run:</strong> </p>
 <p>Reader will leverage Tekton to build a repeatable cloud native CI/CD system to deploy the application on Kubernetes.</p>
 <ul>
-<li><strong>Tasks</strong> - Through a simple Hello World we learn the fundamentals of Tekton </li>
-<li><strong>Pipelines</strong> - Expand on our use of Tekton and build an end-to-end build pipeline for the StudentBook application. </li>
-<li><strong>Incorporating Security Testing</strong> - Add and automate the security testing we completed in the Crawl and Walk sections.</li>
-<li><strong>Enforcing Integrity with Tekton</strong> - Using Tekton to enforce security through out the build and deploy phases.
+<li><strong>Pipeline as code</strong> - Use pipeline as code to automate a security scan of a container image. </li>
+<li><strong>Tekton Bundles</strong> - Create and published signed Tekton bundles.</li>
+<li><strong>Tekton Builds</strong> - Using Tekton and Kaniko to build, sign an push an image to an OCI Registry. </li>
+<li><strong>Tekton Triggers</strong> - Using Tekton triggers to automatically update application on Git commit. Also using Kyverno to enforce the use of verified images and Tekton bundles on K8s.
 <br></li>
 </ul>
 <p><strong>Fly:</strong></p>
 <p>For this final step, we are going to go deeper into the end-to-end securing of the GitSecOps pipeline. </p>
 <ul>
-<li>TBD</li>
+<li><strong>Using Kustomize</strong> - How to use Kustomize to simplify K*s deployment in a declarative way </li>
+<li><strong>ArgoCD</strong> - Incorporating ArgoCD to provide declarative continuous deployment.</li>
+<li><strong>Dedicated security testing</strong> - Implementing and using a dedicated security namespace in the testing phase. </li>
+<li><strong>Security testing in production</strong> - Using blue/green testing deployment approaches to facilitate rigorous security testing in production. </li>
 </ul>
 <h3 id="22-capstone">2.2 Capstone<a class="headerlink" href="#22-capstone" title="Permanent link">&para;</a></h3>
 <p>The Capstone project is an opportunity to apply all the principles discovered during the workshop to a greenfield application.  Readers are encouraged to use the application provided, but there is also the opportunity to use their own application. </p>
@@ -1003,7 +1208,7 @@ There is no one "best" way to implement GitSecOps, as the specific practices and
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 31, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2023</span>
       
     
   </small>

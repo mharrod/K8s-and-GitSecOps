@@ -253,11 +253,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../run/" class="md-tabs__link">
-      Run(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../run/" class="md-tabs__link">
+        Run
+      </a>
+    </li>
+  
 
       
         
@@ -265,11 +269,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../fly/" class="md-tabs__link">
-      Fly(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fly/" class="md-tabs__link">
+        Fly
+      </a>
+    </li>
+  
 
       
         
@@ -653,10 +661,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../run/">Run</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Run" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Run
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../run/" class="md-nav__link">
-        Run(WIP)
+      <a href="../../run/pac/" class="md-nav__link">
+        1.Pipeline as Code
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/bundle/" class="md-nav__link">
+        2.Tekton Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/build/" class="md-nav__link">
+        3.Build a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/triggers/" class="md-nav__link">
+        4.Triggering Tekton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -668,10 +773,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../fly/">Fly</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Fly" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Fly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../fly/" class="md-nav__link">
-        Fly(WIP)
+      <a href="../../fly/kustomize/" class="md-nav__link">
+        1.Kustomize
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/argo/" class="md-nav__link">
+        2.ArgoCD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/bi/" class="md-nav__link">
+        3.Bifurcated Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/bg/" class="md-nav__link">
+        4.Production security testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -844,6 +1046,7 @@
 <p>Building an image from a Dockerfile allows you to audit the exact steps that were used to build the image. This can be helpful for security purposes, as you can review the commands in the Dockerfile to ensure that they do not include any vulnerabilities.</p>
 </details>
 <p>Overall, building an image from a Dockerfile can provide you with more control and flexibility when deploying your applications with Docker.</p>
+<hr />
 <h2 id="supplementary-learning-material">Supplementary Learning Material<a class="headerlink" href="#supplementary-learning-material" title="Permanent link">&para;</a></h2>
 <iframe width="1120" height="630" src="https://www.youtube.com/embed/V9JZauO_YAc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -860,19 +1063,20 @@
 <li>Testing with Trivy - <a href="https://semaphoreci.com/blog/continuous-container-vulnerability-testing-with-trivy">https://semaphoreci.com/blog/continuous-container-vulnerability-testing-with-trivy</a></li>
 <li>Containers and Semgrep - <a href="https://kondukto.io/blog/docker-security-best-practices-with-semgrep">https://kondukto.io/blog/docker-security-best-practices-with-semgrep</a></li>
 <li>Dockerfile best practices - <a href="https://github.com/kondukto-io/dockerfile-bestpractice-rules">https://github.com/kondukto-io/dockerfile-bestpractice-rules</a></li>
-<li>Using hadolint - <a href="https://github.com/hadolint/hadolint">https://github.com/hadolint/hadolint</a></li>
+<li>Using Hadolint - <a href="https://github.com/hadolint/hadolint">https://github.com/hadolint/hadolint</a></li>
 <li>Hadolint - <a href="https://www.containiq.com/post/hadolint">https://www.containiq.com/post/hadolint</a>  </li>
 <li>Syft and Grype - <a href="https://medium.com/rahasak/container-vulnerability-scan-with-syft-and-grype-f4ec9cd4d7f1">https://medium.com/rahasak/container-vulnerability-scan-with-syft-and-grype-f4ec9cd4d7f1</a></li>
 <li>Trivy <a href="https://medium.com/ascentic-technology/secure-container-images-with-trivy-1ef12b5b9b4d">https://medium.com/ascentic-technology/secure-container-images-with-trivy-1ef12b5b9b4d</a></li>
 </ul>
+<hr />
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Inspect Image on GitHub Repo with Trivy</li>
+<li>Inspect image on GitHub Repo with Trivy</li>
 <li>Inspect the Dockerfile with Hadolint</li>
-<li>Check for Secrets with gggshield</li>
+<li>Check for secrets with gggshield</li>
 <li>Inspect with Skopeo on DockerHub</li>
-<li>Download Image as OCI Archive and scan with Grype </li>
-<li>Run Software Composite Analysis with Syft</li>
+<li>Download image as OCI archive and scan with Grype </li>
+<li>Run software composite analysis with Syft</li>
 <li>Pull Juiceshop image and rerun security testing</li>
 <li>Check for misconfigurations with DockerBench  </li>
 <li>Run container and scan with NMAP and Nikto </li>
@@ -911,8 +1115,8 @@ $ skopeo inspect --config docker://bkimminich/juice-shop | jq &#39;.&#39;
 # list just the tags
 skopeo list-tags docker://bkimminich/juice-shop
 </code></pre></div>
-<p>5.Download Image as OCI Archive and scan with Grype - Downloading as an archived TAR to a isolated location. Not pulling the image just yet. We want to check for known vulnerabilities. </p>
-<div class="highlight"><pre><span></span><code># Copy image to local OCI Archive
+<p>5.Download Image as OCI archive and scan with Grype - Downloading as an archived TAR to a isolated location. Not pulling the image just yet. We want to check for known vulnerabilities. </p>
+<div class="highlight"><pre><span></span><code># Copy image to local OCI archive
 $ skopeo copy docker://bkimminich/juice-shop oci-archive:$JUICE_HOME/juice-shop.tar 
 
 # Install Grype
@@ -924,14 +1128,14 @@ $ grype oci-archive:/tmp/juice/juice-shop.tar --scope all-layers | tee $JUICE_HO
 # Bonus Snyk has great tooling to do this.  You will need to set-up a free tier account.
 $ snyk container test oci-archive:/tmp/juice/juice-shop.tar 
 </code></pre></div>
-<p>6.Run Software Composite Analysis with Syft - Output a SBOM for use in upstream process and to see what dependencies are in play. </p>
+<p>6.Run software composite Aaalysis with Syft - Output a SBOM for use in upstream process and to see what dependencies are in play. </p>
 <div class="highlight"><pre><span></span><code># Install Syft
 $ curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
-# Generate SBOM from Image
+# Generate SBOM from image
 $ syft packages docker.io/bkimminich/juice-shop --scope all-layers  -o json
 
-# Generate SBOM from Archieve 
+# Generate SBOM from archive 
 $ syft packages oci-archive:/tmp/juice/juice-shop.tar --scope all-layers  -o json | tee $JUICE_HOME/outputs/syft.txt
 </code></pre></div>
 <p>7.Pull Juiceshop image and rerun security testing - Image has been thoroughly tested even before downloading.  Now we can download it and run testing again.  This is overkill but shows that most of the testing can also be run against the local image, not just an archive.  </p>
@@ -971,6 +1175,7 @@ $ docker run --rm -it instrumentisto/nmap -A -T4 172.17.0.3  -p 3000  | tee $JUI
 $ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000 | tee $JUICE_HOME/outputs/nikto.txt
 </code></pre></div>
 </details>
+<hr />
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Automate</strong> - Semi-automate your 3rd party container image security assessment process with a Bash script </li>
@@ -987,7 +1192,7 @@ $ docker run --rm -it frapsoft/nikto -h 172.17.0.3:3000 | tee $JUICE_HOME/output
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2023</span>
       
     
   </small>

@@ -253,11 +253,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../run/" class="md-tabs__link">
-      Run(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../run/" class="md-tabs__link">
+        Run
+      </a>
+    </li>
+  
 
       
         
@@ -265,11 +269,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../fly/" class="md-tabs__link">
-      Fly(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fly/" class="md-tabs__link">
+        Fly
+      </a>
+    </li>
+  
 
       
         
@@ -653,10 +661,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../run/">Run</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Run" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Run
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../run/" class="md-nav__link">
-        Run(WIP)
+      <a href="../../run/pac/" class="md-nav__link">
+        1.Pipeline as Code
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/bundle/" class="md-nav__link">
+        2.Tekton Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/build/" class="md-nav__link">
+        3.Build a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/triggers/" class="md-nav__link">
+        4.Triggering Tekton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -668,10 +773,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../fly/">Fly</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Fly" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Fly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../fly/" class="md-nav__link">
-        Fly(WIP)
+      <a href="../../fly/kustomize/" class="md-nav__link">
+        1.Kustomize
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/argo/" class="md-nav__link">
+        2.ArgoCD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/bi/" class="md-nav__link">
+        3.Bifurcated Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/bg/" class="md-nav__link">
+        4.Production security testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -828,6 +1030,7 @@
 <p>Kubernetes (often shortened to "K8s") is an open-source container orchestration system.  It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation.  Kubernetes allows developers to easily deploy, scale, and manage containerized applications in a clustered environment.  Kubernetes provides a set of abstractions that are used to define, deploy, and manage containerized applications.  These abstractions include pods, the smallest deployable units in Kubernetes, and are used to group one or more containers.  Services, which provide stable network connections to pods and Replication Controllers, ensure that the desired number of pod replicas are running at all times.</p>
 <p>Kubernetes also provides load balancing, automatic scaling, and self-healing to ensure that applications are highly available and can handle changing traffic patterns.  Additionally, Kubernetes can be integrated with other tools and services, such as monitoring and logging, to provide a complete solution for managing containerized applications.</p>
 <p>To develop with Kubernetes clusters locally, we will use KIND Kubernetes IN Docker (kind).  Overall, KIND is a powerful tool for local Kubernetes development because it is easy to set up and use, provides an isolated environment for testing and debugging, and integrates well with other tools.  Other options, such as minikube, work equally as well. </p>
+<hr />
 <h2 id="supplementary-learning-materials">Supplementary Learning Materials<a class="headerlink" href="#supplementary-learning-materials" title="Permanent link">&para;</a></h2>
 <iframe width="1120" height="630" src="https://www.youtube.com/embed/s_o8dwzRlu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -836,7 +1039,7 @@
 <li>Kubernetes and Kind - <a href="https://www.baeldung.com/ops/kubernetes-kind">https://www.baeldung.com/ops/kubernetes-kind</a></li>
 <li>Kubernetes and Kind - <a href="https://phoenixnap.com/kb/kubernetes-kind">https://phoenixnap.com/kb/kubernetes-kind</a></li>
 <li>Kubernetes cluster development with kind - <a href="https://faun.pub/creating-a-kubernetes-cluster-for-development-with-kind-189df2cb0792">https://faun.pub/creating-a-kubernetes-cluster-for-development-with-kind-189df2cb0792</a></li>
-<li>Kind with podman - <a href="https://www.linkedin.com/pulse/kind-podman-ubuntu-2004lts-ludger-pottmeier">https://www.linkedin.com/pulse/kind-podman-ubuntu-2004lts-ludger-pottmeier</a></li>
+<li>Kind with Podman - <a href="https://www.linkedin.com/pulse/kind-podman-ubuntu-2004lts-ludger-pottmeier">https://www.linkedin.com/pulse/kind-podman-ubuntu-2004lts-ludger-pottmeier</a></li>
 <li>Kind &amp; K8s lab - <a href="https://cloudyuga.guru/hands_on_lab/kind-k8s">https://cloudyuga.guru/hands_on_lab/kind-k8s</a></li>
 <li>Juiceshop on Kubernetes - <a href="https://networkandcode.hashnode.dev/run-owasp-juice-shop-as-a-kubernetes-service">https://networkandcode.hashnode.dev/run-owasp-juice-shop-as-a-kubernetes-service</a></li>
 <li>Ingress for Kubernetes - <a href="https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx">https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx</a></li>
@@ -844,16 +1047,17 @@
 <li>Security scanning for K8s - <a href="https://mattermost.com/blog/the-top-7-open-source-tools-for-securing-your-kubernetes-cluster/#kubeaudit">https://mattermost.com/blog/the-top-7-open-source-tools-for-securing-your-kubernetes-cluster/#kubeaudit</a></li>
 <li>Helm - <a href="https://helm.sh/docs/intro/quickstart/">https://helm.sh/docs/intro/quickstart/</a></li>
 </ul>
+<hr />
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Create a named Cluster called JuiceShop</li>
-<li>Create or copy deployment manifest and service manifest and sabe for Juiceshop (provided above)</li>
-<li>Scan Juice Manifests with Kubescape</li>
-<li>Install Juice shop with manifests</li>
-<li>Complete a security scan of the Kubernetes environment (Include: Kubesecurity bench, Kubeaudit, Kubescape)</li>
-<li>Fetch Juice-Shop Helm Chart and scan with Checkov and Helm lint </li>
-<li>Install JuiceShop Application with Helm chart</li>
-<li>Install StudentBook Using manifests</li>
+<li>Create a named Cluster called JuiceShop with NGNIX support.</li>
+<li>Create or copy deployment manifest and service manifest and sabe for Juiceshop (provided above).</li>
+<li>Scan Juice Manifests with Kubescape.</li>
+<li>Install Juice shop with manifests.</li>
+<li>Complete a security scan of the Kubernetes environment (Include: Kubesecurity bench, Kubeaudit, Kubescape).</li>
+<li>Fetch Juice-Shop Helm Chart and scan with Checkov and Helm lint.</li>
+<li>Install JuiceShop Application with Helm chart.</li>
+<li>Install StudentBook using manifests.</li>
 </ol>
 <details class="harma">
 <summary>Juice-Shop Manifests</summary>
@@ -1136,6 +1340,7 @@ $ checkov -d juice-shop/ --framework helm
 <div class="highlight"><pre><span></span><code>$ helm install juice-shop-helm juice/juice-shop
 </code></pre></div>
 </details>
+<hr />
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Additional Vulnerability Scanning</strong> - Install Scanbox and run the security scans we did in previous section with it</li>
@@ -1148,7 +1353,7 @@ $ checkov -d juice-shop/ --framework helm
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2023</span>
       
     
   </small>

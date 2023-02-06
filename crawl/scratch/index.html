@@ -253,11 +253,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../run/" class="md-tabs__link">
-      Run(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../run/" class="md-tabs__link">
+        Run
+      </a>
+    </li>
+  
 
       
         
@@ -265,11 +269,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../fly/" class="md-tabs__link">
-      Fly(WIP)
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fly/" class="md-tabs__link">
+        Fly
+      </a>
+    </li>
+  
 
       
         
@@ -679,10 +687,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../run/">Run</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Run" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Run
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../run/" class="md-nav__link">
-        Run(WIP)
+      <a href="../../run/pac/" class="md-nav__link">
+        1.Pipeline as Code
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/bundle/" class="md-nav__link">
+        2.Tekton Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/build/" class="md-nav__link">
+        3.Build a container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run/triggers/" class="md-nav__link">
+        4.Triggering Tekton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -694,10 +799,107 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../fly/">Fly</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Fly" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Fly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../fly/" class="md-nav__link">
-        Fly(WIP)
+      <a href="../../fly/kustomize/" class="md-nav__link">
+        1.Kustomize
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/argo/" class="md-nav__link">
+        2.ArgoCD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/bi/" class="md-nav__link">
+        3.Bifurcated Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fly/bg/" class="md-nav__link">
+        4.Production security testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -919,6 +1121,7 @@
 <p>Building a container in multiple stages can improve build efficiency by allowing you to reuse common build steps across multiple containers. This can save time and reduce the complexity of the build process.</p>
 </details>
 <p>Overall, building containers in multiple stages can provide a number of benefits, including smaller image size, improved security, simplified maintenance, and improved build efficiency.</p>
+<hr />
 <h2 id="supplementary-learning-material">Supplementary Learning Material<a class="headerlink" href="#supplementary-learning-material" title="Permanent link">&para;</a></h2>
 <iframe width="1120" height="630" src="https://www.youtube.com/embed/JofsaZ3H1qM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -931,26 +1134,27 @@
 <li>
 <p>Getting started Buildah - &lt;(https://opensource.com/article/18/6/getting-started-buildah&gt;</p>
 </li>
-<li>Buildah and OCI Images - <a href="https://www.linode.com/docs/guides/using-buildah-oci-images/">https://www.linode.com/docs/guides/using-buildah-oci-images/</a></li>
+<li>Buildah and OCI images - <a href="https://www.linode.com/docs/guides/using-buildah-oci-images/">https://www.linode.com/docs/guides/using-buildah-oci-images/</a></li>
 <li>Github buildah tutorial - <a href="https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md)">https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md)</a> </li>
-<li>Docker Multistage - <a href="https://docs.docker.com/build/building/multi-stage">https://docs.docker.com/build/building/multi-stage</a>  </li>
+<li>Docker multi-stage - <a href="https://docs.docker.com/build/building/multi-stage">https://docs.docker.com/build/building/multi-stage</a>  </li>
 <li>Buildah vs Kaniko - <a href="https://earthly.dev/blog/docker-vs-buildah-vs-kaniko/">https://earthly.dev/blog/docker-vs-buildah-vs-kaniko/</a></li>
 <li>Distroless - <a href="https://github.com/GoogleContainerTools/distroless">https://github.com/GoogleContainerTools/distroless</a></li>
-<li>distroless - <a href="https://medium.com/@luke_perry_dev/dockerizing-with-distroless-f3b84ae10f3a">https://medium.com/@luke_perry_dev/dockerizing-with-distroless-f3b84ae10f3a</a></li>
+<li>Distroless - <a href="https://medium.com/@luke_perry_dev/dockerizing-with-distroless-f3b84ae10f3a">https://medium.com/@luke_perry_dev/dockerizing-with-distroless-f3b84ae10f3a</a></li>
 </ul>
+<hr />
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Install and Test Student API Application </li>
+<li>Install and test Student API Application </li>
 <li>Create a Basic Dockerfile</li>
-<li>Create a Multistage DockerFile </li>
-<li>Create a Single Stage Buildah File</li>
-<li>Creat a MultiStage Buildah File</li>
+<li>Create a multistage DockerFile </li>
+<li>Create a single stage Buildah File</li>
+<li>Creat a multiStage Buildah File</li>
 <li>Push image to Dockerhub </li>
 </ol>
 <p><strong>Solutions</strong></p>
 <details class="solve">
 <summary>Solution</summary>
-<p>1.Install and Test Student API Application</p>
+<p>1.Install and test Student API Application</p>
 <p>1.1 Set-up environment
   <div class="highlight"><pre><span></span><code>$ mkdir student
 $ cd student
@@ -964,7 +1168,7 @@ $ sudo apt-get install jq
 $ wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq &amp;&amp;\
 chmod +x /usr/bin/yq
 </code></pre></div></p>
-<p>1.2 Create Application</p>
+<p>1.2 Create application</p>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;app.py
 
 from fastapi import FastAPI, HTTPException
@@ -1050,7 +1254,7 @@ $ curl -X &#39;PUT&#39; http://127.0.0.1:8090/students/0 -H &#39;Content-Type: a
 # Delete Student 
 $curl -X &#39;DELETE&#39; http://127.0.0.1:8090/students/3
 </code></pre></div>
-<p>2.0 Create a Basic Dockerfile </p>
+<p>2.0 Create a basic Dockerfile </p>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;Dockerfile
 FROM python:3.8
 
@@ -1071,7 +1275,7 @@ EOF
 <div class="highlight"><pre><span></span><code>$ docker build -t studentbook .
 $ docker run -p 8090:8090 --name sb studentbook
 </code></pre></div>
-<p>3.0 Create a Multistage DockerFile </p>
+<p>3.0 Create a multistage DockerFile </p>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;Dockerfile
 # Stage 1 - Build stage
 FROM python:3.10-slim AS build-env
@@ -1101,7 +1305,7 @@ EOF
 <div class="highlight"><pre><span></span><code>$ docker build -t studentbook .
 $ docker run -p 8090:8090 studentbook
 </code></pre></div>
-<p>4.0 Create a Single Stage Buildah File </p>
+<p>4.0 Create a single stage Buildah File </p>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;&#39;EOF&#39; &gt;&gt;single-buildah.sh
 #!/usr/bin/env bash
 
@@ -1148,10 +1352,11 @@ $ docker image tag studentbook USER/studentbook:v1.0
 $ docker push 
 </code></pre></div></p>
 </details>
+<hr />
 <h2 id="additional-challenges">Additional Challenges<a class="headerlink" href="#additional-challenges" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>Security Tooling Container</strong> - Building your own security tooling container can be useful.  Using <a href="https://github.com/madhuakula/hacker-container">Hacker Container</a> as inspiration, craft your own security tooling container that you can use for future endeavors.  Some design consideration are:</p>
+<p><strong>Security tooling container</strong> - Building your own security tooling container can be useful.  Using <a href="https://github.com/madhuakula/hacker-container">Hacker Container</a> as inspiration, craft your own security tooling container that you can use for future endeavors.  Some design consideration are:</p>
 <ul>
 <li>Conatiner should be built using a multistage process</li>
 <li>Keep the container as lean as possible</li>
@@ -1168,7 +1373,7 @@ $ docker push
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2023</span>
       
     
   </small>
